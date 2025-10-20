@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Accueil — DataCraft Studio{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1 id="heroTitle">Je transforme vos données en décisions mesurables.</h1>
+  <p>Je suis <strong>Christophe CAKPO</strong>, Data Analyst & Data Engineer freelance. J’accompagne les entreprises à <strong>structurer</strong>, <strong>automatiser</strong> et <strong>valoriser leurs données</strong> pour accélérer leur croissance.</p>
+
+  <div id="dataLines">
+    <div class="card data-line"></div>
+    <div class="card data-line"></div>
+  </div>
+
+  <div class="badges">
+    <span class="badge badge--tech">Power BI</span>
+    <span class="badge badge--tech">Python</span>
+    <span class="badge badge--tech">SQL</span>
+    <span class="badge badge--tech">Airflow</span>
+    <span class="badge">DBT</span>
+    <span class="badge">Snowflake</span>
+  </div>
+
+</section>
+
+<section style="padding:14px 0 24px">
+  <div class="grid grid--home">
+    <article class="card card--home">
+      <h3><img class="icon" src="{{ url_for('static', filename='img/icons/bi.svg') }}" alt="">Tableaux de bord & KPIs</h3>
+      <p>Modèle propre, DAX maintenable et UX claire. Un MVP Power BI livrable en &lt; 2 semaines.</p>
+      <div class="meta"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Modèle sémantique</span></div>
+      <div class="card__footer"></div>
+    </article>
+
+    <article class="card card--home">
+      <h3><img class="icon" src="{{ url_for('static', filename='img/icons/de.svg') }}" alt="">Pipelines & automatisation</h3>
+      <p>Des pipelines robustes, automatisés et testés pour fiabiliser vos analyses. Gain de temps au quotidien.</p>
+      <div class="meta"><span class="tag">Airflow</span><span class="tag">ETL / ELT</span><span class="tag">Python</span></div>
+      <div class="card__footer"></div>
+    </article>
+
+    <article class="card card--home">
+      <h3><img class="icon" src="{{ url_for('static', filename='img/icons/auto.svg') }}" alt="">Qualité & Data Warehouse</h3>
+      <p>Règles de qualité, alerting et architecture cloud scalable pour des données décisionnelles fiables.</p>
+      <div class="meta"><span class="tag">Snowflake</span><span class="tag">BigQuery</span><span class="tag">Observabilité</span></div>
+      <div class="card__footer"></div>
+    </article>
+  </div>
+</section>
+
+<!-- Pourquoi me faire confiance ? -->
+<section class="trust">
+  <div class="card">
+    <h3>Pourquoi me faire confiance ?</h3>
+    <p class="muted">Une approche simple, orientée résultats, qui rassure les entreprises à chaque mission.</p>
+
+    <ul class="reasons">
+      <li>
+        <img class="trust__icon" src="{{ url_for('static', filename='img/icons/experience.svg') }}" alt="Expérience">
+        <div>
+          <strong>3+ ans d’expérience</strong>
+          en Data Engineering & BI dans l’industrie et les services.
+        </div>
+      </li>
+      <li>
+        <img class="trust__icon" src="{{ url_for('static', filename='img/icons/delivery.svg') }}" alt="Livrables rapides">
+        <div>
+          <strong>Livrables rapides & clairs</strong>
+          MVP Power BI ou pipeline automatisé en moins de 2 semaines.
+        </div>
+      </li>
+      <li>
+        <img class="trust__icon" src="{{ url_for('static', filename='img/icons/cloud.svg') }}" alt="Technos cloud">
+        <div>
+          <strong>Technos cloud modernes</strong>
+          Stack : Power BI, Python, Airflow, Snowflake, BigQuery, DBT.
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA final -->
+<section class="cta-final" style="margin-top:16px;margin-bottom:8px">
+  <div class="card">
+    <h3 style="margin:0">Prêt à accélérer vos projets data ?</h3>
+    <p class="muted">Discutons de vos besoins et voyons comment transformer vos données en leviers de croissance.</p>
+    <a class="btn" href="{{ url_for('contact.form') }}">Travaillons ensemble</a>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.gsap) return;
+  gsap.from("#heroTitle", {y: 10, opacity: 0, duration: .5, ease: "power2.out"});
+  gsap.to("#dataLines .data-line", {
+    opacity: .9, duration: .8, stagger: .05, repeat: -1, yoyo: true, delay: .15, ease: "sine.inOut"
+  });
+});
+</script>
+{% endblock %}

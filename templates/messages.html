@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Messages reçus</h1>
+{% for m in messages %}
+  <div class="card" style="margin-bottom:12px">
+    <h3>{{ m.subject }}</h3>
+    <p><strong>De :</strong> {{ m.sender_name }} — {{ m.sender_email }}</p>
+    <p>{{ m.message }}</p>
+    <small>Reçu le {{ m.created_at.strftime('%d/%m/%Y %H:%M') }}</small>
+  </div>
+{% endfor %}
+{% endblock %}

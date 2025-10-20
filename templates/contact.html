@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block title %}Contact — DataCraft Studio{% endblock %}
+
+{% block flash_area %}{% endblock %}
+
+{% block content %}
+<h1 style="font-family:Poppins, sans-serif;margin:0 0 14px">Travaillons ensemble</h1>
+
+{# =========================
+   Données par défaut (facultatif)
+   Si ta route fournit déjà ces valeurs, tu peux supprimer ce bloc.
+   ========================= #}
+{% if contact is not defined %}
+  {% set contact = {
+    "email": "contact@datacraftstudio.fr",
+    "linkedin": "https://www.linkedin.com/",
+    "malt": "https://www.malt.fr/",
+    "github": "https://github.com/",
+    "cv_url": url_for('static', filename='docs/CV_Christophe_CAKPO.pdf'),
+    "qr_img": url_for('static', filename='img/qr_cv.png')
+  } %}
+{% endif %}
+
+<div class="grid--contact">
+  <!-- ============= FORMULAIRE ============= -->
+  <section class="card contact-card">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container" style="margin-bottom:10px">
+          {% for category, msg in messages %}
+            <div class="alert alert-{{ category }}" role="alert">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('contact.form') }}" class="contact-form" novalidate>
+      <div class="form-row">
+        <label for="name">Votre nom <span class="req">*</span></label>
+        <input id="name" name="name" type="text" placeholder="Jean Dupont" autocomplete="name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email <span class="req">*</span></label>
+        <input id="email" name="email" type="email" placeholder="vous@entreprise.com" required autocomplete="email" inputmode="email">
+      </div>
+
+      <div class="form-row">
+        <label for="company">Société</label>
+        <input id="company" name="company" type="text" placeholder="Entreprise / Organisation" autocomplete="organization">
+      </div>
+
+      <div class="form-row">
+        <label for="phone">Téléphone</label>
+        <input id="phone" name="phone" type="tel" placeholder="+33 6 12 34 56 78" autocomplete="tel" inputmode="tel">
+      </div>
+
+      <div class="form-row">
+        <label for="need_type">Type de besoin</label>
+        <select id="need_type" name="need_type">
+          <option value="" selected>— Sélectionner… —</option>
+          <option>Dashboard / Power BI</option>
+          <option>Pipeline de données (ETL/ELT)</option>
+          <option>Qualité / Tests / Observabilité</option>
+          <option>Conseil & cadrage</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="deadline">Délai souhaité</label>
+        <select id="deadline" name="deadline">
+          <option value="" selected>Flexible</option>
+          <option>Sous 2 semaines</option>
+          <option>1 mois</option>
+          <option>2–3 mois</option>
+          <option>À discuter</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="subject">Sujet <span class="req">*</span></label>
+        <input id="subject" name="subject" type="text" placeholder="Ex. : Dashboard financier Power BI" required>
+      </div>
+
+      <div class="form-row">
+        <label for="message">Message <span class="req">*</span></label>
+        <textarea id="message" name="message" rows="6" placeholder="Décrivez votre contexte, objectifs, délais. Je vous réponds sous 24 h ouvrées." required></textarea>
+      </div>
+
+      {# Honeypot anti-spam #}
+      <input type="text" name="company_internal" autocomplete="off" tabindex="-1" class="hp" aria-hidden="true">
+
+      <div class="form-row" style="display:flex;gap:10px;align-items:center">
+        <input id="consent" name="consent" type="checkbox" style="width:auto">
+        <label for="consent" style="margin:0">J’accepte d’être recontacté au sujet de ma demande.</label>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn" type="submit">Envoyer</button>
+        <span class="muted" style="font-size:12px">Réponse sous 24 h ouvrées.</span>
+      </div>
+    </form>
+  </section>
+
+  <!-- ============= COORDONNÉES & PROFILS (compact + conditionnel) ============= -->
+  {% if contact.email or contact.linkedin or contact.malt or contact.github or contact.cv_url %}
+  <aside class="card contact-info">
+    <h3 class="contact-info__title" style="margin-top:0">Coordonnées & profils</h3>
+
+    <ul class="contact-list">
+      {% if contact.email %}
+        <li><strong>Email</strong> :
+          <a href="mailto:{{ contact.email }}" class="link">{{ contact.email }}</a>
+        </li>
+      {% endif %}
+      {% if contact.linkedin %}
+        <li><strong>LinkedIn</strong> :
+          <a target="_blank" rel="noopener" href="{{ contact.linkedin }}" class="link">Profil</a>
+        </li>
+      {% endif %}
+      {% if contact.malt %}
+        <li><strong>Malt</strong> :
+          <a target="_blank" rel="noopener" href="{{ contact.malt }}" class="link">Page freelance</a>
+        </li>
+      {% endif %}
+      {% if contact.github %}
+        <li><strong>GitHub</strong> :
+          <a target="_blank" rel="noopener" href="{{ contact.github }}" class="link">@DataCraft</a>
+        </li>
+      {% endif %}
+    </ul>
+
+    {% if contact.cv_url %}
+    <div class="qr-card">
+      <div class="qr-card__media" style="width:88px;height:88px">
+        <img
+          src="{{ contact.qr_img }}"
+          alt="QR — CV Christophe CAKPO"
+          width="84" height="84" loading="lazy">
+      </div>
+      <div class="qr-card__body">
+        <h4 class="qr-card__title">CV</h4>
+        <p class="qr-card__text muted" style="margin:0">
+          Scannez pour accéder à mon CV à jour,
+          ou <a href="{{ contact.cv_url }}" target="_blank" rel="noopener" class="link">ouvrez-le ici</a>.
+        </p>
+      </div>
+    </div>
+    {% endif %}
+  </aside>
+  {% endif %}
+</div>
+
+<script>
+  // Empêche le double envoi
+  document.addEventListener('submit', (e) => {
+    const btn = e.target.querySelector('button[type="submit"]');
+    if (btn && !btn.dataset.loading) {
+      btn.dataset.loading = "1";
+      btn.disabled = true;
+      btn.textContent = "Envoi…";
+    }
+  });
+</script>
+{% endblock %}

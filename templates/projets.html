@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Projets — DataCraft Studio{% endblock %}
+
+{% block content %}
+<h1 style="font-family:Poppins, sans-serif;margin:0 0 10px">Mes projets</h1>
+<p class="muted">Sélection de missions et projets personnels. <em>Problème → Solution → Résultats.</em></p>
+
+<div class="grid grid--3" style="margin-top:16px">
+  {% for p in projects or [] %}
+  <article class="card card--project">
+  {% if p.image %}
+    <img src="{{ p.image }}" alt="Aperçu — {{ p.title }}" class="card-thumb">
+  {% endif %}
+
+  <div class="card__content">
+    <h3>{{ p.title }}</h3>
+    {% if p.summary %}<p>{{ p.summary }}</p>{% endif %}
+
+    <div class="project-details">
+      {% if p.stack %}<div><strong>Stack :</strong> {{ p.stack }}</div>{% endif %}
+      {% if p.problem %}<div><strong>Problème :</strong> {{ p.problem }}</div>{% endif %}
+      {% if p.solution %}<div><strong>Solution :</strong> {{ p.solution }}</div>{% endif %}
+      {% if p.impact %}<div><strong>Résultat :</strong> {{ p.impact }}</div>{% endif %}
+    </div>
+
+    {% if p.tags %}
+      <div class="meta">
+        {% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if p.slug %}
+  <div class="card__footer">
+    <a class="btn btn--ghost" href="{{ url_for('pages.projet_detail', slug=p.slug) }}">Détails</a>
+  </div>
+  {% endif %}
+</article>
+  {% endfor %}
+</div>
+{% endblock %}

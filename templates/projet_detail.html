@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }} — Étude de cas{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('pages.projets') }}" class="btn btn--ghost">← Retour aux projets</a>
+
+<!-- ===== Hero / Cover ===== -->
+<section class="card" style="margin-top:16px; padding:0; overflow:hidden">
+  <div style="padding:22px 18px 12px">
+    <h1 style="font-family:Poppins, sans-serif;margin:0 0 6px">{{ project.title }}</h1>
+    {% if project.summary %}<p class="muted" style="margin:0 0 10px">{{ project.summary }}</p>{% endif %}
+
+    <!-- Tags -->
+    {% if project.tags %}
+    <div class="meta" style="margin-top:8px">
+      {% for t in project.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  {% if project.image %}
+    <img src="{{ project.image }}" alt="Aperçu — {{ project.title }}" style="width:100%;display:block;max-height:380px;object-fit:cover">
+  {% endif %}
+</section>
+
+<!-- ===== Quick facts + CTA ===== -->
+<div class="grid grid--3" style="margin-top:16px">
+  <article class="card" style="grid-column: span 2">
+    <!-- Problème / Solution / Résultats -->
+    {% if project.problem or project.solution or project.impact %}
+    <section>
+      <h3>Contexte & Résultats</h3>
+      {% if project.problem %}<p><strong>Problème</strong> — {{ project.problem }}</p>{% endif %}
+      {% if project.solution %}<p><strong>Solution</strong> — {{ project.solution }}</p>{% endif %}
+      {% if project.impact %}<p><strong>Résultats</strong> — {{ project.impact }}</p>{% endif %}
+    </section>
+    {% endif %}
+
+    <!-- Fonctionnalités clés -->
+    {% if project.features %}
+    <section style="margin-top:14px">
+      <h3>Fonctionnalités clés</h3>
+      <ul style="margin:6px 0 0 18px">
+        {% for f in project.features %}<li>{{ f }}</li>{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    <!-- Galerie optionnelle -->
+    {% if project.gallery %}
+    <section style="margin-top:14px">
+      <h3>Galerie</h3>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+        {% for g in project.gallery %}
+          <img src="{{ g }}" alt="Capture {{ loop.index }} — {{ project.title }}" style="width:100%;border-radius:12px;border:1px solid rgba(0,0,0,.06);object-fit:cover">
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Liens -->
+    {% if project.link or project.repo %}
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+      {% if project.link %}<a class="btn" href="{{ project.link }}" target="_blank" rel="noopener">Voir en ligne</a>{% endif %}
+      {% if project.repo %}<a class="btn btn--ghost" href="{{ project.repo }}" target="_blank" rel="noopener">Code source</a>{% endif %}
+    </div>
+    {% endif %}
+  </article>
+
+  <aside class="card">
+    <h3 style="margin-top:0">Fiche rapide</h3>
+    {% if project.client %}<p><strong>Client</strong> — {{ project.client }}</p>{% endif %}
+    {% if project.stack %}<p><strong>Stack</strong> — <em>{{ project.stack }}</em></p>{% endif %}
+    {% if project.roles %}<p><strong>Rôle</strong> — {{ project.roles|join(', ') }}</p>{% endif %}
+    {% if project.duration %}<p><strong>Durée</strong> — {{ project.duration }}</p>{% endif %}
+
+    {% if project.metrics %}
+    <div style="display:grid;gap:8px;margin-top:10px">
+      {% for m in project.metrics %}
+        <div class="card" style="padding:10px">
+          <div style="font-size:22px;font-weight:800;line-height:1">{{ m.value }}</div>
+          <div class="muted" style="font-size:12px">{{ m.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <hr style="border:none;border-top:1px solid rgba(0,0,0,.08);margin:14px 0">
+    <a class="btn" href="{{ url_for('contact.form') }}">Discuter d’un projet similaire</a>
+  </aside>
+</div>
+
+<!-- Témoignage (optionnel) -->
+{% if project.testimonial %}
+<section class="card" style="margin-top:16px">
+  <h3 style="margin-top:0">Témoignage</h3>
+  <blockquote style="margin:0;font-style:italic">“{{ project.testimonial.text }}”</blockquote>
+  {% if project.testimonial.author %}
+    <p style="margin:6px 0 0" class="muted">— {{ project.testimonial.author }}</p>
+  {% endif %}
+</section>
+{% endif %}
+
+<!-- Données structurées SEO (si dispo) -->
+{% if project.title %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": {{ project.title|tojson }},
+  "description": {{ (project.summary or project.impact or project.solution or project.problem)|default('', true)|tojson }},
+  "inLanguage": "fr",
+  {% if project.image %}"image": {{ project.image|tojson }},{% endif %}
+  {% if project.client %}"publisher": {"@type":"Organization","name": {{ project.client|tojson }} },{% endif %}
+  "keywords": {{ (project.tags or [])|tojson }}
+}
+</script>
+{% endif %}
+{% endblock %}

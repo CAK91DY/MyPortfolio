@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}Services — DataCraft Studio{% endblock %}
+
+{% block content %}
+<h1 style="font-family:Poppins, sans-serif;margin:0 0 10px">Mes services</h1>
+<p class="muted">Des solutions data prêtes pour la prod — de l’ingestion à la décision.</p>
+
+{# Fallback si `services` n’est pas fourni par la route #}
+{% if services is not defined %}
+  {% set services = [
+    {
+      "title":"Business Intelligence",
+      "desc":"Conception de modèles sémantiques et tableaux de bord Power BI orientés décision, avec KPIs clairs et maintenables.",
+      "tags":["Power BI","Tableau","DAX"],
+      "icon":"img/icons/bi.svg"
+    },
+    {
+      "title":"Data Engineering",
+      "desc":"Mise en place de pipelines automatisés (Airflow, dbt) garantissant la fiabilité, la traçabilité et la scalabilité des données.",
+      "tags":["Airflow","DBT","ETL/ELT"],
+      "icon":"img/icons/de.svg"
+    },
+    {
+      "title":"Automatisation & Qualité",
+      "desc":"Observabilité et alerting (Dynatrace), tests de données et CI/CD pour des flux robustes et des décisions de confiance.",
+      "tags":["Dynatrace","CI/CD","Testing"],
+      "icon":"img/icons/auto.svg"
+    }
+  ] %}
+{% endif %}
+
+<!-- Grille responsive fluide, cartes égales -->
+<div class="grid grid--services" style="margin-top:16px">
+
+  {% for s in services %}
+  <article class="card card--service" style="padding:18px 20px;min-height:210px">
+    <h3>
+      {% if s.icon %}
+        <img class="icon-lg" src="{{ url_for('static', filename=s.icon) }}" alt="" />
+      {% endif %}
+      {{ s.title }}
+    </h3>
+
+    <div class="card__body">
+      {% if s.desc %}<p class="muted" style="margin:0">{{ s.desc }}</p>{% endif %}
+
+      {% if s.tags %}
+      <div class="card__tags">
+        {% for t in s.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="card__footer"></div>
+  </article>
+  {% endfor %}
+
+</div>
+
+<section style="margin-top:24px">
+  <div class="card" style="padding:0">
+    <div style="padding:18px 18px 0">
+      <h3 style="margin:0">Méthode d’intervention</h3>
+      <p class="muted" style="margin:6px 0 0">
+        Chaque mission suit un processus éprouvé, garantissant une mise en production maîtrisée et l’autonomie des équipes.
+      </p>
+    </div>
+
+    <ol class="steps">
+      <!-- Étape 1 -->
+      <li class="step">
+        <div class="step__badge">1</div>
+        <div class="step__content">
+          <h4>Cadrage</h4>
+          <p>Objectifs, KPIs, sources, contraintes et périmètre. Livrable : note de cadrage + plan d’action.</p>
+          <div class="step__tags">
+            <span class="tag">Atelier</span><span class="tag">KPIs</span><span class="tag">Scope</span>
+          </div>
+        </div>
+      </li>
+
+      <!-- Étape 2 -->
+      <li class="step">
+        <div class="step__badge">2</div>
+        <div class="step__content">
+          <h4>Prototype</h4>
+          <p>POC rapide pour valider la valeur métier et l’adhérence technique.</p>
+          <div class="step__tags">
+            <span class="tag">POC</span><span class="tag">Démo</span><span class="tag">Feedback</span>
+          </div>
+        </div>
+      </li>
+
+      <!-- Étape 3 -->
+      <li class="step">
+        <div class="step__badge">3</div>
+        <div class="step__content">
+          <h4>Industrialisation</h4>
+          <p>Pipelines, QA, CI/CD, sécurité et observabilité. Mise en prod maîtrisée.</p>
+          <div class="step__tags">
+            <span class="tag">ETL/ELT</span><span class="tag">QA</span><span class="tag">CI/CD</span>
+          </div>
+        </div>
+      </li>
+
+      <!-- Étape 4 -->
+      <li class="step">
+        <div class="step__badge">4</div>
+        <div class="step__content">
+          <h4>Transfert</h4>
+          <p>Documentation, handover et formation pour autonomie des équipes.</p>
+          <div class="step__tags">
+            <span class="tag">Docs</span><span class="tag">Handover</span><span class="tag">Formation</span>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="step__cta">
+      <a class="btn" href="{{ url_for('contact.form') }}">Discutons de votre besoin</a>
+      <a class="btn btn--ghost" href="{{ url_for('pages.projets') }}">Voir des cas concrets</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
