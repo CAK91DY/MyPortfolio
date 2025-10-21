@@ -11,9 +11,7 @@
 
   <!-- Styles -->
   <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
-
   <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/datacraft-studio.css') }}"> -->
-
   <link rel="preload" href="{{ url_for('static', filename='css/datacraft-studio.min.css') }}" as="style">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/datacraft-studio.min.css') }}">
 
@@ -21,12 +19,12 @@
 
   <!-- Scripts globaux -->
   <script defer src="{{ url_for('static', filename='js/theme.js') }}"></script>
-  
 </head>
 
 <body>
 <header class="header">
   <div class="container header__inner">
+    <!-- Brand -->
     <div class="brand">
       <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="DataCraft logo" height="28">
       <strong>DataCraft Studio</strong>
@@ -35,7 +33,13 @@
     {# endpoint courant pour l’état actif #}
     {% set ep = (request.endpoint or '') %}
 
-    <nav class="nav-pills" aria-label="Navigation principale">
+    <!-- Bouton menu (mobile) -->
+    <div class="menu-toggle" onclick="document.querySelector('.nav-pills').classList.toggle('active')" role="button" aria-label="Ouvrir/fermer le menu" aria-controls="main-nav" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="nav-pills" aria-label="Navigation principale">
       <a class="pill {{ 'active' if ep=='pages.index' else '' }}" href="{{ url_for('pages.index') }}">
         <span class="pill__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5Z"/></svg>
@@ -70,7 +74,6 @@
         </span>
         <span>Contact</span>
       </a>
-
     </nav>
   </div>
 </header>
@@ -87,7 +90,16 @@
   <div class="container">
     © <span id="y"></span> DataCraft Studio — Christophe CAKPO
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    // année dynamique
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Accessibilité : ferme le menu après clic sur un lien (mobile)
+    const nav = document.querySelector('.nav-pills');
+    nav?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => nav.classList.remove('active'));
+    });
+  </script>
 </footer>
 </body>
 </html>

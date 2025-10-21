@@ -772,3 +772,102 @@ img, svg{ max-width:100%; height:auto; }
 }
 .projects .card--project{ display:flex; flex-direction:column; }
 .projects .card--project .card__footer{ margin-top:auto; }
+
+/* Responsive navbar */
+@media (max-width: 768px) {
+  header .nav-pills {
+    display: none;
+    flex-direction: column;
+    background: var(--card);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  header .nav-pills.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .menu-toggle svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--text);
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* ===== Menu contact  ===== */
+
+.contact-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-infos a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-infos a:hover {
+  text-decoration: underline;
+}
+
+.qr-section img {
+  width: 120px;
+  height: 120px;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 480px) {
+  .qr-section img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+body {
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+/* ===== Contact — infos & QR (mobile friendly) ===== */
+.contact-infos{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.contact-infos a{
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px dashed rgba(34,211,238,.35);
+}
+.contact-infos a:hover{ border-bottom-color:transparent; }
+
+.qr-section{ margin-top:10px; }
+.qr-section img{
+  width:120px; height:120px;
+  border-radius:10px;
+  box-shadow:var(--shadow);
+}
+@media (max-width:480px){
+  .qr-section img{ width:100px; height:100px; }
+}
+
+/* un peu d’air en bas de carte */
+.contact-info{ gap:14px; }

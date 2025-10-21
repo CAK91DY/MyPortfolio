@@ -7,8 +7,7 @@
 <h1 style="font-family:Poppins, sans-serif;margin:0 0 14px">Travaillons ensemble</h1>
 
 {# =========================
-   Données par défaut (facultatif)
-   Si ta route fournit déjà ces valeurs, tu peux supprimer ce bloc.
+   Données par défaut (si non fournies par la route)
    ========================= #}
 {% if contact is not defined %}
   {% set contact = {
@@ -103,53 +102,43 @@
     </form>
   </section>
 
-  <!-- ============= COORDONNÉES & PROFILS (compact + conditionnel) ============= -->
-  {% if contact.email or contact.linkedin or contact.malt or contact.github or contact.cv_url %}
+  <!-- ============= COORDONNÉES & PROFILS (ton bloc intégré) ============= -->
   <aside class="card contact-info">
     <h3 class="contact-info__title" style="margin-top:0">Coordonnées & profils</h3>
 
-    <ul class="contact-list">
+    <div class="contact-infos">
       {% if contact.email %}
-        <li><strong>Email</strong> :
-          <a href="mailto:{{ contact.email }}" class="link">{{ contact.email }}</a>
-        </li>
+        <p>Email :
+          <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+        </p>
       {% endif %}
       {% if contact.linkedin %}
-        <li><strong>LinkedIn</strong> :
-          <a target="_blank" rel="noopener" href="{{ contact.linkedin }}" class="link">Profil</a>
-        </li>
+        <p>LinkedIn :
+          <a href="{{ contact.linkedin }}" target="_blank" rel="noopener">Profil</a>
+        </p>
       {% endif %}
       {% if contact.malt %}
-        <li><strong>Malt</strong> :
-          <a target="_blank" rel="noopener" href="{{ contact.malt }}" class="link">Page freelance</a>
-        </li>
+        <p>Malt :
+          <a href="{{ contact.malt }}" target="_blank" rel="noopener">Page freelance</a>
+        </p>
       {% endif %}
       {% if contact.github %}
-        <li><strong>GitHub</strong> :
-          <a target="_blank" rel="noopener" href="{{ contact.github }}" class="link">@DataCraft</a>
-        </li>
-      {% endif %}
-    </ul>
-
-    {% if contact.cv_url %}
-    <div class="qr-card">
-      <div class="qr-card__media" style="width:88px;height:88px">
-        <img
-          src="{{ contact.qr_img }}"
-          alt="QR — CV Christophe CAKPO"
-          width="84" height="84" loading="lazy">
-      </div>
-      <div class="qr-card__body">
-        <h4 class="qr-card__title">CV</h4>
-        <p class="qr-card__text muted" style="margin:0">
-          Scannez pour accéder à mon CV à jour,
-          ou <a href="{{ contact.cv_url }}" target="_blank" rel="noopener" class="link">ouvrez-le ici</a>.
+        <p>GitHub :
+          <a href="{{ contact.github }}" target="_blank" rel="noopener">@DataCraft</a>
         </p>
+      {% endif %}
+
+      {% if contact.cv_url %}
+      <div class="qr-section">
+        <h3>CV</h3>
+        <p>Scannez pour accéder à mon CV à jour,
+          ou <a href="{{ contact.cv_url }}" target="_blank" rel="noopener">ouvrez-le ici</a>.
+        </p>
+        <img src="{{ contact.qr_img }}" alt="QR code CV" width="120" height="120" loading="lazy">
       </div>
+      {% endif %}
     </div>
-    {% endif %}
   </aside>
-  {% endif %}
 </div>
 
 <script>
