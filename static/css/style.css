@@ -845,3 +845,5 @@ p{ font-size:16px; }
   border-bottom: 0 !important;
   cursor: inherit;
 }
+
+.btn__icon{ margin-right:8px; }   /* primary case */
