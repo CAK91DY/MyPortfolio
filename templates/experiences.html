@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Expériences — Christophe CAKPO') }}{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="skills-hero">
+  <div class="container hero__inner">
+    <span class="section-label">{{ _('Mon parcours') }}</span>
+    <h1 class="hero__title">{{ _('Expériences Professionnelles') }}</h1>
+    <p class="hero__lead">
+      {{ _('Un parcours mêlant') }} <strong>{{ _('data engineering') }}</strong>, <strong>{{ _('business intelligence') }}</strong> {{ _('et amélioration continue orientée impact métier.') }}
+    </p>
+  </div>
+</section>
+
+<!-- EXPÉRIENCES -->
+<section class="section xp-section">
+  <div class="container">
+    <div class="xp-list">
+
+      <!-- Expérience 1 -->
+      <article class="xp-card reveal" data-anim="up">
+        <header class="xp-head">
+          <div class="xp-brand">
+            <img src="{{ url_for('static', filename='img/projets/bosch.jpeg') }}" alt="Bosch Home Comfort">
+            <span class="xp-company">Bosch Home Comfort</span>
+          </div>
+          <h3 class="xp-role">{{ _('Data Analyst / Data Engineer') }}</h3>
+          <p class="xp-meta">
+            {{ _('janv. 2023 — août. 2025') }}
+            <span class="xp-sep">•</span>
+            <span class="xp-loc">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" fill="currentColor"/>
+              </svg>
+              {{ _('Paris, France') }}
+            </span>
+          </p>
+        </header>
+
+        <p class="xp-desc">
+          {{ _('Mission axée sur l’amélioration de l’expérience client et le pilotage de la performance commerciale via l’analyse NPS et des tableaux de bord stratégiques.') }}
+        </p>
+
+        <ul class="xp-points">
+          <li><strong>{{ _('Tableaux de bord Power BI :') }}</strong> {{ _('KPIs clairs pour le pilotage des ventes et du NPS.') }}</li>
+          <li><strong>{{ _('Data pipeline :') }}</strong> {{ _('consolidation multi-sources avec SQL & Python.') }}</li>
+          <li><strong>{{ _('Automatisation ETL :') }}</strong> {{ _('Airflow, dbt, BigQuery & Cloud Storage.') }}</li>
+          <li><strong>{{ _('Suivi qualité & monitoring :') }}</strong> {{ _('contrôle des flux et boucle avec le SAV.') }}</li>
+        </ul>
+
+        <div class="xp-result">
+          <span>+14&nbsp;<span class="pct">%</span>{{ _('de ventes (sept–déc vs N-1) · +8 pts NPS en 6 mois · −30') }}<span class="pct">%</span>{{ _('de temps de reporting') }}</span>
+        </div>
+
+        <div class="xp-stack">
+          <span class="chip">Power BI</span><span class="chip">SQL</span><span class="chip">Python</span>
+          <span class="chip">Airflow</span><span class="chip">dbt</span><span class="chip">Snowflake</span>
+          <span class="chip">GitHub</span><span class="chip">ETL & BI</span>
+        </div>
+      </article>
+
+      <!-- Expérience 2 -->
+      <article class="xp-card reveal" data-anim="up">
+        <header class="xp-head">
+          <div class="xp-brand">
+            <img src="{{ url_for('static', filename='img/projets/neurones.jpeg') }}" alt="Neurones">
+            <span class="xp-company">Neurones IT</span>
+          </div>
+          <h3 class="xp-role">{{ _('Data Manager (Monitoring Databases)') }}</h3>
+          <p class="xp-meta">
+            {{ _('oct. 2022 — janv. 2023') }}
+            <span class="xp-sep">•</span>
+            <span class="xp-loc">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" fill="currentColor"/>
+              </svg>
+              {{ _('Paris, France') }}
+            </span>
+          </p>
+        </header>
+
+        <p class="xp-desc">
+          {{ _('Mise en place d’un monitoring proactif pour anticiper les dégradations et optimiser la performance des bases de données critiques.') }}
+        </p>
+
+        <ul class="xp-points">
+          <li><strong>{{ _('Observabilité :') }}</strong> {{ _('configuration Dynatrace (transactions, temps de réponse).') }}</li>
+          <li><strong>{{ _('Diagnostics :') }}</strong> {{ _('analyse de logs et détection des goulots d’étranglement.') }}</li>
+          <li><strong>{{ _('Optimisation :') }}</strong> {{ _('recommandations SQL et allocation fine des ressources.') }}</li>
+        </ul>
+
+        <div class="xp-result">
+          <span>+25&nbsp;<span class="pct">%</span>{{ _('sur les temps de réponse · −40') }}<span class="pct">%</span>{{ _('d’incidents critiques') }}</span>
+        </div>
+
+        <div class="xp-stack">
+          <span class="chip">PostgreSQL</span><span class="chip">Oracle</span>
+          <span class="chip">Dynatrace</span><span class="chip">Excel</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Fade-in si pas déjà présent ailleurs -->
+<script>
+  (function(){
+    const ob = new IntersectionObserver((entries)=>{
+      entries.forEach(e => e.target.classList.toggle('inview', e.isIntersecting));
+    }, {threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el => ob.observe(el));
+  })();
+</script>
+
+{% endblock %}

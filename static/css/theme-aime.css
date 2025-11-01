@@ -1,0 +1,342 @@
+/* =========================================================
+   Overrides "style Aimé" — couche visuelle par-dessus ton CSS
+   ========================================================= */
+
+/* Palette & bases (fond très clair, texte sombre, bleu “action”) */
+:root{
+  --aime-blue: #1f66ff;
+  --aime-blue-2: #0b5cff;
+  --aime-bg: #f4f6fb;
+  --aime-card: #ffffff;
+  --aime-text: #0f172a;
+  --aime-muted: #667085;
+  --aime-border: rgba(2, 6, 23, .08);
+  --aime-shadow: 0 12px 24px rgba(2,6,23,.06);
+  --aime-radius: 16px;
+}
+
+html,body{ background: var(--aime-bg); color: var(--aime-text); }
+.container{ max-width: 1080px; }
+
+/* Header “clair” + soulignement discret de l’onglet actif */
+header.header{
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--aime-border);
+  backdrop-filter: none;
+}
+.brand img{ height: 28px !important; }
+.brand strong{ color: var(--aime-text); font-size: 15px; }
+.nav-pills .pill{
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  padding: 10px 12px !important;
+  border-radius: 10px !important;
+  color: var(--aime-muted) !important;
+  font-weight: 600;
+}
+.nav-pills .pill:hover{ color: var(--aime-text) !important; }
+.nav-pills .pill.active{
+  color: var(--aime-text) !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  position: relative;
+}
+.nav-pills .pill.active::after{
+  content:""; position:absolute; left:12px; right:12px; bottom:6px;
+  height: 3px; border-radius: 999px;
+  background: var(--aime-blue);
+}
+
+/* Titres & typographie */
+h1,h2,h3{ margin: 0; }
+h1{ font-family: Poppins,system-ui,sans-serif; font-weight: 800;
+    font-size: clamp(28px, 4.6vw, 44px); letter-spacing:.2px; }
+h2{ font-size: clamp(22px, 3vw, 32px); font-weight: 800; }
+h3{ font-size: clamp(16px, 2vw, 18.5px); font-weight: 700; }
+.muted{ color: var(--aime-muted) !important; }
+
+/* Boutons à la Aimé (ronds bleus) */
+.btn{
+  background: var(--aime-blue) !important;
+  color: #fff !important;
+  padding: 12px 18px !important;
+  border-radius: 999px !important;
+  border: none !important;
+  box-shadow: 0 6px 14px rgba(31,102,255,.18);
+}
+.btn:hover{ background: var(--aime-blue-2) !important; transform: translateY(-1px); }
+.btn--ghost{
+  background: #fff !important; color: var(--aime-blue) !important;
+  border: 1px solid rgba(31,102,255,.22) !important;
+}
+.btn--ghost:hover{ background: rgba(31,102,255,.06) !important; }
+
+/* Cartes très douces (fond blanc, bord léger, grosses arrondis) */
+.card{
+  background: var(--aime-card) !important;
+  border: 1px solid var(--aime-border) !important;
+  border-radius: var(--aime-radius) !important;
+  box-shadow: var(--aime-shadow) !important;
+  padding: 18px !important;
+}
+.card:hover{ transform: translateY(0) !important; box-shadow: 0 14px 28px rgba(2,6,23,.08) !important; }
+
+/* HERO centré avec avatar & gros titre bleu */
+.hero--center{
+  text-align: center;
+  padding: clamp(32px, 6vw, 64px) 0 clamp(12px, 3vw, 24px);
+}
+.hero--center .avatar{
+  width: 92px; height: 92px; object-fit: cover; border-radius: 999px;
+  border: 6px solid #fff; outline: 2px solid rgba(2,6,23,.06);
+  box-shadow: 0 8px 20px rgba(2,6,23,.08); display:block; margin: 0 auto 18px;
+}
+.hero--center h1{
+  color: var(--aime-blue);
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.hero--center .lead{
+  max-width: 720px; margin: 10px auto 14px; color: var(--aime-muted);
+}
+.hero--center .cta-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+/* Sections */
+.section{ padding: clamp(14px, 3vw, 22px) 0; }
+.section > .muted{ margin-top: 6px; }
+
+/* “Ce que vous trouverez...” → cartes longues et douces */
+.grid.grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 980px){ .grid.grid-3{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px){ .grid.grid-3{ grid-template-columns: 1fr; } }
+.feature{
+  background: linear-gradient(#fff, #fff) padding-box,
+              radial-gradient(100% 100% at 0% 0%, rgba(31,102,255,.08), rgba(2,6,23,0)) border-box;
+  border: 1px solid transparent;
+}
+.feature p{ color: var(--aime-muted); }
+
+/* Stepbox (Pourquoi travailler...) */
+.stepbox{
+  display:flex; gap:12px; align-items:center;
+  background:#fff; border:1px solid var(--aime-border);
+  padding: 14px 16px; border-radius: 14px; box-shadow: var(--aime-shadow);
+}
+.stepbox .num{
+  flex:0 0 auto; width:36px; height:36px; border-radius:999px;
+  background: #eef3ff; color: var(--aime-blue); font-weight:800;
+  display:grid; place-items:center; border:1px solid rgba(31,102,255,.2);
+}
+
+/* Certifications : deux belles cartes */
+.cert-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:780px){ .cert-grid{ grid-template-columns:1fr; } }
+.cert{ padding:16px; }
+
+/* Projets récents → cartes “liste” verticales (comme Aimé) */
+.projects-list{ display:grid; gap:12px; margin-top:12px; }
+.project-card{
+  display:flex; flex-direction:column; gap:8px;
+  padding:16px; border-radius: var(--aime-radius);
+  border:1px solid var(--aime-border); background:#fff; box-shadow: var(--aime-shadow);
+}
+.project-card .tag{ background:#eef3ff; color: var(--aime-blue); border:none; font-weight:700; }
+.project-card p{ color: var(--aime-muted); margin: 2px 0 6px; }
+.project-card a{ font-weight:700; color: var(--aime-blue); text-decoration:none; }
+.project-card a:hover{ text-decoration: underline; }
+
+/* CTA bande bleue */
+.cta-band{
+  padding: clamp(16px, 3vw, 24px);
+  background: linear-gradient(90deg, var(--aime-blue), var(--aime-blue-2));
+  color: #fff; border-radius: 18px; text-align:center;
+  box-shadow: 0 18px 36px rgba(31,102,255,.22);
+}
+.cta-band .btn{ background:#fff !important; color: var(--aime-blue) !important; }
+.cta-band .btn.btn--ghost{
+  background: transparent !important; color:#fff !important; border-color: rgba(255,255,255,.5) !important;
+}
+
+/* Tags globaux un peu plus “soft” */
+.tag{
+  background: #eef2f7 !important; color: #0f172a !important;
+  border: 1px solid rgba(2,6,23,.08) !important; border-radius: 999px !important;
+  padding: 5px 10px !important; font-size: 12px !important;
+}
+
+/* Footer sobre */
+footer{ color: #64748b !important; }
+
+
+
+{% extends "base.html" %}
+{% block title %}Compétences — Christophe CAKPO{% endblock %}
+
+{% block content %}
+
+<!-- En-tête de page (réutilise les mêmes patterns que l’accueil) -->
+<section class="skills-hero section text-center">
+  <div class="container">
+    <span class="section-label">Mon profil</span>
+    <h1 class="h1">Compétences &amp; Parcours</h1>
+    <p class="lead">
+      Une expertise <strong>engineering</strong> + <strong>analytics</strong> pour fiabiliser les données,
+      automatiser les flux et livrer des insights actionnables avec <strong>Power&nbsp;BI</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- Compétences techniques -->
+<section class="section skills-tech">
+  <div class="container">
+    <span class="section-label">Stack technique</span>
+    <h2 class="h2 h-left">Compétences techniques</h2>
+
+    <ul class="skill-list">
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="skill__icon" aria-hidden="true">📊</div>
+          <div>
+            <h3 class="h3">Analyse &amp; Visualisation</h3>
+            <p class="skill__desc">Power BI (DAX, modèles), Data storytelling, KPI design</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:92%" data-label="92%"></div>
+      </li>
+
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="skill__icon" aria-hidden="true">🗄️</div>
+          <div>
+            <h3 class="h3">Bases de Données &amp; SQL</h3>
+            <p class="skill__desc">PostgreSQL, MySQL, SQL Server — Modélisation &amp; performance</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:88%" data-label="88%"></div>
+      </li>
+
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="skill__icon" aria-hidden="true">🐍</div>
+          <div>
+            <h3 class="h3">Python</h3>
+            <p class="skill__desc">Pandas, APIs &amp; web scraping, tests, packaging</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:84%" data-label="84%"></div>
+      </li>
+
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="skill__icon" aria-hidden="true">☁️</div>
+          <div>
+            <h3 class="h3">Cloud &amp; Data Engineering</h3>
+            <p class="skill__desc">Azure &amp; Microsoft Fabric, dbt, Airflow, Docker</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:78%" data-label="78%"></div>
+      </li>
+
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="skill__icon" aria-hidden="true">🧪</div>
+          <div>
+            <h3 class="h3">DataOps &amp; Qualité</h3>
+            <p class="skill__desc">CI/CD, tests de données, monitoring &amp; alerting</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:75%" data-label="75%"></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Autres connaissances -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Technologies complémentaires</span>
+    <h2 class="h2 h-left">Autres connaissances</h2>
+
+    <div class="grid-4">
+      <article class="pill-card card">
+        <h4 class="h3">Modélisation</h4>
+        <p>Star/Snowflake, Data Vault léger, pratiques de gouvernance.</p>
+      </article>
+      <article class="pill-card card">
+        <h4 class="h3">ETL/ELT</h4>
+        <p>Orchestration, ingestion API/CSV, optimisation des pipelines.</p>
+      </article>
+      <article class="pill-card card">
+        <h4 class="h3">Storytelling</h4>
+        <p>Design de métriques, navigation UX de tableaux de bord.</p>
+      </article>
+      <article class="pill-card card">
+        <h4 class="h3">Fiabilité</h4>
+        <p>Contrôles de qualité, logs, traçabilité des transformations.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Soft skills & langues -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Compétences transverses</span>
+    <h2 class="h2 h-left">Soft skills &amp; langues</h2>
+
+    <div class="grid-3">
+      <article class="soft-card card">
+        <div class="soft-card__icon">🎯</div>
+        <h4 class="h3">Analyse &amp; Synthèse</h4>
+        <p>Transformer des données brutes en décisions claires et mesurables.</p>
+      </article>
+      <article class="soft-card card">
+        <div class="soft-card__icon">💬</div>
+        <h4 class="h3">Communication</h4>
+        <p>Interface fluide entre métiers et IT, pédagogie orientée valeur.</p>
+      </article>
+      <article class="soft-card card">
+        <div class="soft-card__icon">🚀</div>
+        <h4 class="h3">Autonomie &amp; Proactivité</h4>
+        <p>Conduite de projets end-to-end, livraison itérative.</p>
+      </article>
+      <article class="soft-card card">
+        <div class="soft-card__icon">🛠️</div>
+        <h4 class="h3">Résolution de problèmes</h4>
+        <p>Automatisation, réduction des anomalies, amélioration continue.</p>
+      </article>
+    </div>
+
+    <div class="lang-line card" style="margin-top:16px">
+      <span class="lang-chip section-label">🌍 Langues</span>
+      <div class="lang-cols">
+        <div><strong>Français</strong><br><span>Natif</span></div>
+        <div><strong>Anglais</strong><br><span>B2 — Professionnel</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section class="section section--certs">
+  <div class="container">
+    <span class="section-label">Certifications</span>
+    <h2 class="h2 h-left">Certifications professionnelles</h2>
+
+    <div class="certs-grid">
+      <article class="cert-card">
+        <div class="cert-card__icon" aria-hidden="true">🪪</div>
+        <h3 class="h3 cert-card__title">Power BI Data Analyst — Microsoft</h3>
+        <p class="cert-card__meta"><span>Modélisation</span><span>DAX</span><span>Visualisation</span><span>Juillet 2024</span></p>
+      </article>
+
+      <article class="cert-card">
+        <div class="cert-card__icon" aria-hidden="true">🪪</div>
+        <h3 class="h3 cert-card__title">Data Science Professional — IBM</h3>
+        <p class="cert-card__meta"><span>Python</span><span>SQL</span><span>Data Science</span><span>Avril 2024</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

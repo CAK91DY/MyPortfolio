@@ -1,155 +1,103 @@
 {% extends "base.html" %}
-{% block title %}Contact — DataCraft Studio{% endblock %}
-
-{% block flash_area %}{% endblock %}
+{% block title %}{{ _('Contact — Christophe CAKPO') }}{% endblock %}
 
 {% block content %}
-<h1 style="font-family:Poppins, sans-serif;margin:0 0 14px">Travaillons ensemble</h1>
 
-{# =========================
-   Données par défaut (si non fournies par la route)
-   ========================= #}
-{% if contact is not defined %}
-  {% set contact = {
-    "email": "contact@datacraftstudio.fr",
-    "linkedin": "https://www.linkedin.com/",
-    "malt": "https://www.malt.fr/",
-    "github": "https://github.com/",
-    "cv_url": url_for('static', filename='docs/CV_Christophe_CAKPO.pdf'),
-    "qr_img": url_for('static', filename='img/qr_cv.png')
-  } %}
-{% endif %}
+<!-- HERO -->
+<section class="skills-hero">
+  <div class="container hero__inner">
+    <span class="section-label">{{ _('Me contacter') }}</span>
+    <h1 class="hero__title">{{ _('Parlons de vos projets data') }}</h1>
+    <p class="hero__lead">
+      {{ _("Besoin d’un") }} <strong>{{ _("pipeline robuste") }}</strong>, {{ _("d’un") }} <strong>{{ _("dashboard Power BI") }}</strong> {{ _("impactant") }}
+      {{ _("ou d’un") }} <strong>{{ _("conseil Data Engineering") }}</strong> {{ _("? Envoyez-moi un message.") }}
+    </p>
+  </div>
+</section>
 
-<div class="grid--contact">
-  <!-- ============= FORMULAIRE ============= -->
-  <section class="card contact-card">
+<!-- CARTE + FORMULAIRE -->
+<section id="contact" class="contact-card full-bleed">
+  <div class="contact-card__inner">
+    <div class="contact-card__id">
+      <img class="contact-card__avatar" src="{{ url_for('static', filename='img/about.jpeg') }}" alt="{{ _('Photo de profil') }}">
+      <div>
+        <p class="contact-card__name">Christophe CAKPO</p>
+        <p class="contact-card__role">{{ _('Data Engineer & Analyst') }}</p>
+      </div>
+    </div>
+
+    <nav class="contact-card__links" aria-label="{{ _('Réseaux') }}">
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon linkedin">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 0H5A5 5 0 000 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zM8 19H5V9h3v10zM6.5 7.7A1.75 1.75 0 116.5 4a1.75 1.75 0 010 3.7zM19 19h-3v-5.2c0-1.24-.02-2.83-1.73-2.83-1.73 0-2 1.35-2 2.74V19H9V9h2.88v1.37h.04c.4-.75 1.37-1.54 2.83-1.54C18 8.83 19 10.33 19 12.9V19z"/></svg>
+      </a>
+      <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" class="social-icon github">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5C5.7.5.8 5.4.8 11.7c0 4.9 3.2 9 7.6 10.4.6.1.8-.2.8-.5v-1.7c-3.1.7-3.8-1.4-3.8-1.4-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .8.1-.7.3-1.1.6-1.4-2.5-.3-5.1-1.3-5.1-5.9 0-1.3.5-2.3 1.1-3.2-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3.2 1.2a10.9 10.9 0 015.9 0c2.3-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.9 1.1 1.9 1.1 3.2 0 4.6-2.6 5.6-5.1 5.9.3.3.6.9.6 1.8v2.7c0 .3.2.6.8.5 4.4-1.5 7.6-5.5 7.6-10.4C23.2 5.4 18.3.5 12 .5z"/></svg>
+      </a>
+      <a href="mailto:cakpochristophes91@gmail.com" aria-label="{{ _('Email') }}" class="social-icon email">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20 4H4a2 2 0 00-2 2v1l10 6 10-6V6a2 2 0 00-2-2zm0 6.2l-8 4.8-8-4.8V18a2 2 0 002 2h12a2 2 0 002-2v-7.8z"/></svg>
+      </a>
+    </nav>
+  </div>
+
+  <form class="contact-form" action="{{ url_for('pages.contact_submit') }}" method="post" novalidate>
+    <!-- Honeypot anti-spam (caché via CSS .hp {display:none}) -->
+    <input type="text" id="company" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <div class="grid-2">
+      <label class="field" for="name">
+        <span>{{ _('Nom complet') }}</span>
+        <input id="name" type="text" name="name" placeholder="{{ _('Votre nom') }}" required
+               value="{{ request.form.get('name','') }}">
+      </label>
+
+      <label class="field" for="email">
+        <span>{{ _('Email') }}</span>
+        <input id="email" type="email" name="email" placeholder="vous@exemple.com" required
+               value="{{ request.form.get('email','') }}" autocomplete="email">
+      </label>
+    </div>
+
+    <label class="field" for="subject">
+      <span>{{ _('Objet') }}</span>
+      <input id="subject" type="text" name="subject" placeholder="{{ _('Sujet de votre message') }}" required
+             value="{{ request.form.get('subject','') }}">
+    </label>
+
+    <label class="field" for="message">
+      <span>{{ _('Message') }}</span>
+      <textarea id="message" name="message" rows="5" placeholder="{{ _('Écrivez votre message…') }}" required>{{ request.form.get('message','') }}</textarea>
+    </label>
+
+    <label class="check" for="consent">
+      <input id="consent" type="checkbox" name="consent" {% if request.form.get('consent') %}checked{% endif %} required>
+      <span>{{ _("J’accepte d’être recontacté au sujet de cette demande.") }}</span>
+    </label>
+
+    <div class="actions">
+      <button type="submit" class="btn-pill btn-pill--filled" aria-label="{{ _('Envoyer') }}">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M2 21l20-9L2 3v7l14 2-14 2v7z"/></svg>
+        {{ _('Envoyer') }}
+      </button>
+
+      <a href="mailto:cakpochristophes91@gmail.com" class="btn-pill btn-pill--outline">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20 4H4a2 2 0 00-2 2v1l10 6 10-6V6a2 2 0 00-2-2zm0 6.2l-8 4.8-8-4.8V18a2 2 0 002 2h12a2 2 0 002-2v-7.8z"/></svg>
+        {{ _('Email direct') }}
+      </a>
+    </div>
+
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
-        <div class="flash-container" style="margin-bottom:10px">
-          {% for category, msg in messages %}
-            <div class="alert alert-{{ category }}" role="alert">{{ msg }}</div>
+        <div class="flash-container" role="status" aria-live="polite">
+          {% for cat, msg in messages %}
+            <div class="flash flash--{{ cat }}">
+              <span class="flash-icon">{% if cat == 'success' %}✅{% elif cat == 'error' %}❌{% else %}💬{% endif %}</span>
+              <span class="flash-text">{{ msg }}</span>
+            </div>
           {% endfor %}
         </div>
       {% endif %}
     {% endwith %}
+  </form>
+</section>
 
-    <form method="post" action="{{ url_for('contact.form') }}" class="contact-form" novalidate>
-      <div class="form-row">
-        <label for="name">Votre nom <span class="req">*</span></label>
-        <input id="name" name="name" type="text" placeholder="Jean Dupont" autocomplete="name" required>
-      </div>
-
-      <div class="form-row">
-        <label for="email">Email <span class="req">*</span></label>
-        <input id="email" name="email" type="email" placeholder="vous@entreprise.com" required autocomplete="email" inputmode="email">
-      </div>
-
-      <div class="form-row">
-        <label for="company">Société</label>
-        <input id="company" name="company" type="text" placeholder="Entreprise / Organisation" autocomplete="organization">
-      </div>
-
-      <div class="form-row">
-        <label for="phone">Téléphone</label>
-        <input id="phone" name="phone" type="tel" placeholder="+33 6 12 34 56 78" autocomplete="tel" inputmode="tel">
-      </div>
-
-      <div class="form-row">
-        <label for="need_type">Type de besoin</label>
-        <select id="need_type" name="need_type">
-          <option value="" selected>— Sélectionner… —</option>
-          <option>Dashboard / Power BI</option>
-          <option>Pipeline de données (ETL/ELT)</option>
-          <option>Qualité / Tests / Observabilité</option>
-          <option>Conseil & cadrage</option>
-          <option>Autre</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <label for="deadline">Délai souhaité</label>
-        <select id="deadline" name="deadline">
-          <option value="" selected>Flexible</option>
-          <option>Sous 2 semaines</option>
-          <option>1 mois</option>
-          <option>2–3 mois</option>
-          <option>À discuter</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <label for="subject">Sujet <span class="req">*</span></label>
-        <input id="subject" name="subject" type="text" placeholder="Ex. : Dashboard financier Power BI" required>
-      </div>
-
-      <div class="form-row">
-        <label for="message">Message <span class="req">*</span></label>
-        <textarea id="message" name="message" rows="6" placeholder="Décrivez votre contexte, objectifs, délais. Je vous réponds sous 24 h ouvrées." required></textarea>
-      </div>
-
-      {# Honeypot anti-spam #}
-      <input type="text" name="company_internal" autocomplete="off" tabindex="-1" class="hp" aria-hidden="true">
-
-      <div class="form-row" style="display:flex;gap:10px;align-items:center">
-        <input id="consent" name="consent" type="checkbox" style="width:auto">
-        <label for="consent" style="margin:0">J’accepte d’être recontacté au sujet de ma demande.</label>
-      </div>
-
-      <div class="form-actions">
-        <button class="btn" type="submit">Envoyer</button>
-        <span class="muted" style="font-size:12px">Réponse sous 24 h ouvrées.</span>
-      </div>
-    </form>
-  </section>
-
-  <!-- ============= COORDONNÉES & PROFILS (ton bloc intégré) ============= -->
-  <aside class="card contact-info">
-    <h3 class="contact-info__title" style="margin-top:0">Coordonnées & profils</h3>
-
-    <div class="contact-infos">
-      {% if contact.email %}
-        <p>Email :
-          <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
-        </p>
-      {% endif %}
-      {% if contact.linkedin %}
-        <p>LinkedIn :
-          <a href="{{ contact.linkedin }}" target="_blank" rel="noopener">Profil</a>
-        </p>
-      {% endif %}
-      {% if contact.malt %}
-        <p>Malt :
-          <a href="{{ contact.malt }}" target="_blank" rel="noopener">Page freelance</a>
-        </p>
-      {% endif %}
-      {% if contact.github %}
-        <p>GitHub :
-          <a href="{{ contact.github }}" target="_blank" rel="noopener">@DataCraft</a>
-        </p>
-      {% endif %}
-
-      {% if contact.cv_url %}
-      <div class="qr-section">
-        <h3>CV</h3>
-        <p>Scannez pour accéder à mon CV à jour,
-          ou <a href="{{ contact.cv_url }}" target="_blank" rel="noopener">ouvrez-le ici</a>.
-        </p>
-        <img src="{{ contact.qr_img }}" alt="QR code CV" width="120" height="120" loading="lazy">
-      </div>
-      {% endif %}
-    </div>
-  </aside>
-</div>
-
-<script>
-  // Empêche le double envoi
-  document.addEventListener('submit', (e) => {
-    const btn = e.target.querySelector('button[type="submit"]');
-    if (btn && !btn.dataset.loading) {
-      btn.dataset.loading = "1";
-      btn.disabled = true;
-      btn.textContent = "Envoi…";
-    }
-  });
-</script>
 {% endblock %}

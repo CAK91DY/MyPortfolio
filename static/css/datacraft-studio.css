@@ -871,3 +871,40 @@ body {
 
 /* un peu d’air en bas de carte */
 .contact-info{ gap:14px; }
+
+/* ===== PROJETS — verrou 3 → 2 → 1 (prioritaire, sans changer le HTML) ===== */
+.grid--3{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 22px;
+  align-items: stretch;
+}
+
+@media (max-width: 960px){
+  .grid--3{ grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 640px){
+  .grid--3{ grid-template-columns: 1fr !important; }
+}
+
+/* Cohérence des hauteurs pour les cartes projet */
+.card--project{ display:flex; flex-direction:column; }
+.card--project .card__footer{ margin-top:auto; }
+
+/* Hero : CTA + avatar */
+.hero-cta{display:flex;gap:10px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.hero-avatar{border-radius:999px;border:1px solid var(--hairline);box-shadow:var(--shadow)}
+
+/* Rendre toute la carte cliquable (projets récents) */
+.card{position:relative}
+.stretched{position:absolute;inset:0;z-index:0}
+.card > *{position:relative;z-index:1}
+
+/* Légère amélioration contraste des tags en dark */
+html[data-theme="dark"] .tag{
+  background: rgba(127,127,213,.16);
+  border-color: rgba(127,127,213,.34);
+}
+
+/* Petits details d’images */
+.card-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid var(--hairline)}

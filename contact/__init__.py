@@ -1,2 +1,2 @@
 # contact/__init__.py
-from .routes import contact_bp  # noqa: F401
+from .routes import contact_bp  # IMPORTANT : routes.py ne doit importer aucun modèle

@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Compétences — Christophe CAKPO') }}{% endblock %}
+
+{% block content %}
+
+<!-- HERO local -->
+<section class="skills-hero">
+  <div class="container hero__inner">
+    <span class="section-label">{{ _('Mon profil') }}</span>
+    <h1 class="hero__title">{{ _('Compétences & Parcours') }}</h1>
+    <p class="hero__lead">
+      {{ _('Double casquette ingénierie et analytics pour fiabiliser la donnée, industrialiser les flux et livrer des tableaux de bord utiles avec Power BI.') }}
+    </p>
+  </div>
+</section>
+
+<!-- COMPÉTENCES TECHNIQUES -->
+<section class="section about">
+  <div class="container">
+    <span class="section-label">{{ _('Stack technique') }}</span>
+    <h2>{{ _('Compétences Techniques') }}</h2>
+
+    <ul class="skill-list">
+      <!-- 1. Analyse & Viz -->
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="xp-icon" aria-hidden="true">📊</div>
+          <div>
+            <h3>{{ _('Analyse & Visualisation') }}</h3>
+            <p class="skill__desc">{{ _('Modélisation sémantique, DAX avancé, data storytelling, design de KPI.') }}</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:92%" data-label="92%"></div>
+      </li>
+
+      <!-- 2. Bases de données & SQL -->
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="xp-icon" aria-hidden="true">🗄️</div>
+          <div>
+            <h3>{{ _('Bases de Données & SQL') }}</h3>
+            <p class="skill__desc">{{ _('PostgreSQL, MySQL, SQL Server — schémas en étoile, optimisation de requêtes & index.') }}</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:88%" data-label="88%"></div>
+      </li>
+
+      <!-- 3. Python -->
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="xp-icon" aria-hidden="true">🐍</div>
+          <div>
+            <h3>{{ _('Python') }}</h3>
+            <p class="skill__desc">{{ _('Pandas, intégration d’APIs, automatisations, tests & packaging.') }}</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:84%" data-label="84%"></div>
+      </li>
+
+      <!-- 4. Cloud & Data Engineering -->
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="xp-icon" aria-hidden="true">☁️</div>
+          <div>
+            <h3>{{ _('Cloud & Data Engineering') }}</h3>
+            <p class="skill__desc">{{ _('Azure & Microsoft Fabric, dbt, Airflow, Docker — pipelines robustes et maintenables.') }}</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:78%" data-label="78%"></div>
+      </li>
+
+      <!-- 5. DataOps & Qualité -->
+      <li class="skill card">
+        <div class="skill__info">
+          <div class="xp-icon" aria-hidden="true">🧪</div>
+          <div>
+            <h3>{{ _('DataOps & Qualité') }}</h3>
+            <p class="skill__desc">{{ _('CI/CD, tests de données, surveillance & alertes, fiabilité de bout en bout.') }}</p>
+          </div>
+        </div>
+        <div class="skill__bar" style="--v:75%" data-label="75%"></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- AUTRES CONNAISSANCES -->
+<section class="section extra-knowledge">
+  <span class="section-label">{{ _('Technologies complémentaires') }}</span>
+  <h2 class="section-h2-left">{{ _('Autres Connaissances') }}</h2>
+  <p class="extra-intro">{{ _('Technologies pratiquées ponctuellement ou consolidées au fil des missions.') }}</p>
+
+  <div class="extra-grid">
+    <article class="extra-card">
+      <h4>{{ _('Langages') }}</h4>
+      <ul>
+        <li>R</li>
+        <li>Python</li>
+        <li>SQL</li>
+        <li>VBA</li>
+      </ul>
+    </article>
+
+    <article class="extra-card">
+      <h4>{{ _('Big Data') }}</h4>
+      <ul>
+        <li>Spark</li>
+        <li>Hadoop</li>
+        <li>Kafka</li>
+      </ul>
+    </article>
+
+    <article class="extra-card">
+      <h4>{{ _('Outils & Automatisation') }}</h4>
+      <ul>
+        <li>Power Automate</li>
+        <li>Power Apps</li>
+        <li>Looker Studio & LookML</li>
+      </ul>
+    </article>
+
+    <article class="extra-card">
+      <h4>{{ _('Bases NoSQL & Cloud') }}</h4>
+      <ul>
+        <li>MongoDB</li>
+        <li>Snowflake</li>
+        <li>Azure Synapse</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- SOFT SKILLS & LANGUES -->
+<section class="section softskills">
+  <span class="section-label">{{ _('Compétences transverses') }}</span>
+  <h2 class="section__title">{{ _('Soft Skills & Langues') }}</h2>
+
+  <div class="soft-grid">
+    <article class="soft-card">
+      <div class="soft-card__icon">🎯</div>
+      <h4>{{ _('Analyse & Synthèse') }}</h4>
+      <p>{{ _('De la donnée brute à des décisions claires et mesurables.') }}</p>
+    </article>
+
+    <article class="soft-card">
+      <div class="soft-card__icon">💬</div>
+      <h4>{{ _('Communication') }}</h4>
+      <p>{{ _('Interface fluide entre métiers et équipes data, pédagogie orientée valeur.') }}</p>
+    </article>
+
+    <article class="soft-card">
+      <div class="soft-card__icon">🚀</div>
+      <h4>{{ _('Autonomie & Proactivité') }}</h4>
+      <p>{{ _('Pilotage de projets end-to-end, livraisons itératives et rapides.') }}</p>
+    </article>
+
+    <article class="soft-card">
+      <div class="soft-card__icon">🛠️</div>
+      <h4>{{ _('Résolution de problèmes') }}</h4>
+      <p>{{ _('Automatisation, réduction des anomalies et amélioration continue.') }}</p>
+    </article>
+  </div>
+
+  <div class="lang-row">
+    <span class="section-label">{{ _('Langues') }}</span>
+
+    <div class="lang-cards">
+      <article class="lang-item">
+        <div class="lang-item__flag" aria-hidden="true">🇫🇷</div>
+        <div class="lang-item__body">
+          <h5>{{ _('Français') }}</h5>
+          <p>{{ _('Natif') }}</p>
+        </div>
+      </article>
+
+      <article class="lang-item">
+        <div class="lang-item__flag" aria-hidden="true">🇬🇧</div>
+        <div class="lang-item__body">
+          <h5>{{ _('Anglais') }}</h5>
+          <p>{{ _('B2 — Professionnel') }}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section section--certs">
+  <span class="section-label">{{ _('Certifications') }}</span>
+  <h2 class="section__title">{{ _('Certifications Professionnelles') }}</h2>
+
+  <div class="certs-list">
+
+    <!-- Microsoft Power BI -->
+    <article class="cert-block fade-in">
+      <div class="cert-head">
+        <span class="cert-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="2" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+            <rect x="3" y="3" width="4" height="18" rx="1"/>
+            <rect x="10" y="8" width="4" height="13" rx="1"/>
+            <rect x="17" y="13" width="4" height="8" rx="1"/>
+          </svg>
+        </span>
+        <div>
+          <h3 class="cert-title">Microsoft Power BI Data Analyst</h3>
+          <p class="cert-date">{{ _('Juillet 2024') }}</p>
+        </div>
+      </div>
+
+      <p class="cert-desc">
+        {{ _('Certification Microsoft validant la capacité à transformer des données en informations actionnables, à concevoir des visualisations impactantes et à piloter la performance avec Power BI et Power Query.') }}
+      </p>
+
+      <ul class="cert-points">
+        <li>✔️ <strong>{{ _('Compétences validées :') }}</strong> Power BI, Excel, DAX, Power Query</li>
+        <li>✔️ <strong>{{ _('Visualisation avancée :') }}</strong> {{ _('Dashboards interactifs, clairs et dynamiques') }}</li>
+        <li>✔️ <strong>{{ _('Data storytelling :') }}</strong> {{ _('Indicateurs lisibles et orientés décision') }}</li>
+        <li>✔️ <strong>{{ _('Data Engineering :') }}</strong> {{ _('Automatisation et fiabilisation des flux analytiques') }}</li>
+      </ul>
+
+      <a href="#" class="btn btn--primary">{{ _('Voir le certificat →') }}</a>
+    </article>
+
+    <!-- IBM Data Science -->
+    <article class="cert-block fade-in">
+      <div class="cert-head">
+        <span class="cert-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="2" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9 9h6v6H9z"/>
+            <path d="M12 3v2m0 14v2m9-9h-2M5 12H3"/>
+          </svg>
+        </span>
+        <div>
+          <h3 class="cert-title">IBM Data Science Professional Certificate</h3>
+          <p class="cert-date">{{ _('Avril 2024') }}</p>
+        </div>
+      </div>
+
+      <p class="cert-desc">
+        {{ _('Parcours IBM couvrant l’ensemble de la stack Data Science : manipulation de données en Python, analyse exploratoire, modélisation supervisée & non supervisée, et mise en production de pipelines automatisés.') }}
+      </p>
+
+      <ul class="cert-points">
+        <li>✔️ <strong>{{ _('Compétences validées :') }}</strong> Python, SQL, Web Scraping, Data Science</li>
+        <li>✔️ <strong>{{ _('Visualisation & Analyse :') }}</strong> EDA & storytelling visuel</li>
+        <li>✔️ <strong>{{ _('Machine Learning :') }}</strong> {{ _('Modèles supervisés et non supervisés') }}</li>
+        <li>✔️ <strong>{{ _('Data Engineering :') }}</strong> {{ _('Pipelines de données & préprocessing avancé') }}</li>
+      </ul>
+
+      <a href="#" class="btn btn--primary">{{ _('Voir le certificat →') }}</a>
+    </article>
+
+  </div>
+</section>
+
+{% endblock %}

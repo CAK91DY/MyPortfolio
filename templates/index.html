@@ -1,100 +1,258 @@
 {% extends "base.html" %}
-{% block title %}Accueil — DataCraft Studio{% endblock %}
+{% block title %}{{ _('Accueil — Christophe CAKPO') }}{% endblock %}
 
 {% block content %}
+<!-- HERO -->
 <section class="hero">
-  <h1 id="heroTitle">Je transforme vos données en décisions mesurables.</h1>
-  <p>Je suis <strong>Christophe CAKPO</strong>, Data Analyst & Data Engineer freelance. J’accompagne les entreprises à <strong>structurer</strong>, <strong>automatiser</strong> et <strong>valoriser leurs données</strong> pour accélérer leur croissance.</p>
+  <div class="container hero__inner">
+    <!-- Avatar -->
+    <div class="hero__avatar">
+      <img src="{{ url_for('static', filename='img/about.jpeg') }}" alt="{{ _('Photo') }} — Christophe CAKPO">
+    </div>
 
-  <div id="dataLines">
-    <div class="card data-line"></div>
-    <div class="card data-line"></div>
+    <!-- Headings -->
+    <h1 class="hero__title">{{ _('Bienvenue sur mon portfolio') }}</h1>
+    <p class="hero__subtitle">{{ _('Data Engineer & Analytics Expert') }}</p>
+
+    <!-- Pitch -->
+    <p class="hero__lead">
+      {{ _('Je transforme vos données en') }}
+      <span class="accent">{{ _('leviers stratégiques') }}</span>
+      {{ _('pour fluidifier vos processus et accélérer la prise de décision.') }}
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero__cta">
+      <!-- Téléphone -->
+      <a class="btn btn--primary btn--grad" href="tel:0643500526" aria-label="Téléphone">
+        <span class="btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h2.5a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.24 1.01l-2.2 2.2z"/>
+          </svg>
+        </span>
+        06 43 50 05 26
+      </a>
+
+      <!-- Email -->
+      <a class="btn btn--ghost" href="mailto:cakpochristophes91@gmail.com" aria-label="{{ _('Email') }}">
+        <span class="btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 3l-8 5-8-5V6h16v1zm0 2.3V18H4V9.3l8 5 8-5z"/>
+          </svg>
+        </span>
+        {{ _('Email') }}
+      </a>
+
+      <!-- LinkedIn -->
+      <a class="btn btn--ghost" href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <span class="btn__icon btn__icon--linkedin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" preserveAspectRatio="xMidYMid meet">
+            <path d="M4.98 3.5A2.5 2.5 0 112.5 1a2.5 2.5 0 012.48 2.5zM1 8h4v14H1V8zm6.5 0h4.2v2.1h.07c.59-1.1 2.03-2.46 4.53-2.46 4.68 0 5.7 3.08 5.7 7.09V22h-4v-6.7c0-1.6-.03-3.66-2.23-3.66-2.24 0-2.58 1.74-2.58 3.54V22h-4V8z"/>
+          </svg>
+        </span>
+        {{ _('LinkedIn') }}
+      </a>
+
+      <!-- GitHub -->
+      <a class="btn btn--ghost" href="https://github.com/ton-compte" target="_blank" rel="noopener" aria-label="GitHub">
+        <span class="btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .5a12 12 0 00-3.79 23.4c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.9 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .5z"/>
+          </svg>
+        </span>
+        {{ _('GitHub') }}
+      </a>
+
+      <!-- CV -->
+      <a class="btn btn--primary btn--grad" href="{{ url_for('static', filename='docs/Christophe_CAKPO_CV.pdf') }}" target="_blank" rel="noopener">
+        <span class="btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm1 7V3.5L18.5 9H15z"/>
+          </svg>
+        </span>
+        {{ _('CV') }}
+      </a>
+    </div>
   </div>
-
-  <div class="badges">
-    <span class="badge badge--tech">Power BI</span>
-    <span class="badge badge--tech">Python</span>
-    <span class="badge badge--tech">SQL</span>
-    <span class="badge badge--tech">Airflow</span>
-    <span class="badge">DBT</span>
-    <span class="badge">Snowflake</span>
-  </div>
-
 </section>
 
-<section style="padding:14px 0 24px">
-  <div class="grid grid--home">
-    <article class="card card--home">
-      <h3><img class="icon" src="{{ url_for('static', filename='img/icons/bi.svg') }}" alt="">Tableaux de bord & KPIs</h3>
-      <p>Modèle propre, DAX maintenable et UX claire. Un MVP Power BI livrable en &lt; 2 semaines.</p>
-      <div class="meta"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Modèle sémantique</span></div>
-      <div class="card__footer"></div>
+<!-- QUI SUIS-JE -->
+<section class="section about">
+  <span class="section-label">{{ _('À PROPOS') }}</span>
+  <h2>{{ _('Qui suis-je ?') }}</h2>
+
+  <div class="card about-card">
+    <p>
+      {{ _('Je suis') }} <strong>{{ _('Christophe CAKPO') }}</strong>, {{ _('Data Analyst & Data Engineer, passionné par la') }}
+      <strong>{{ _('mise en valeur de la donnée') }}</strong> {{ _('et l’automatisation des analyses.') }}
+    </p>
+    <p>
+      {{ _('Mon périmètre couvre toute la chaîne de valeur :') }}
+      <strong>{{ _('intégration d’APIs') }}</strong>, <strong>{{ _('fiabilisation de pipelines') }}</strong> et
+      <strong>{{ _('tableaux de bord Power BI') }}</strong> {{ _('pour une décision rapide et sereine.') }}
+    </p>
+
+    <!-- Callout objectif -->
+    <div class="callout obj-fx">
+      <h3>{{ _('Mon objectif') }}</h3>
+      <p>
+        {{ _('Faire de vos données de vrais') }} <strong>{{ _('accélérateurs de performance') }}</strong>.
+        {{ _('J’allie exigence technique et sens du métier pour servir vos enjeux.') }}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="section expertise">
+  <span class="section-label">{{ _('EXPERTISE') }}</span>
+  <h2>{{ _('Ce que vous trouverez dans ce portfolio') }}</h2>
+
+  <div class="grid grid-3" style="margin-top:12px">
+    <article class="card--xp">
+      <div class="xp-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+        </svg>
+      </div>
+      <h3>{{ _('Data Engineering') }}</h3>
+      <p>{{ _('Pipelines automatisés, architectures médaillon, intégrations API et bases de données optimisées.') }}</p>
     </article>
 
-    <article class="card card--home">
-      <h3><img class="icon" src="{{ url_for('static', filename='img/icons/de.svg') }}" alt="">Pipelines & automatisation</h3>
-      <p>Des pipelines robustes, automatisés et testés pour fiabiliser vos analyses. Gain de temps au quotidien.</p>
-      <div class="meta"><span class="tag">Airflow</span><span class="tag">ETL / ELT</span><span class="tag">Python</span></div>
-      <div class="card__footer"></div>
+    <article class="card--xp">
+      <div class="xp-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 3v18h18M19 7l-6 6-4-4-4 4"/>
+        </svg>
+      </div>
+      <h3>{{ _('Business Intelligence') }}</h3>
+      <p>{{ _('Dashboards interactifs, suivi de KPIs et visualisations qui parlent au métier.') }}</p>
     </article>
 
-    <article class="card card--home">
-      <h3><img class="icon" src="{{ url_for('static', filename='img/icons/auto.svg') }}" alt="">Qualité & Data Warehouse</h3>
-      <p>Règles de qualité, alerting et architecture cloud scalable pour des données décisionnelles fiables.</p>
-      <div class="meta"><span class="tag">Snowflake</span><span class="tag">BigQuery</span><span class="tag">Observabilité</span></div>
-      <div class="card__footer"></div>
+    <article class="card--xp">
+      <div class="xp-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 7a4 4 0 105 5l-6 6a2 2 0 11-3-3l6-6A4 4 0 0014 7z"/>
+        </svg>
+      </div>
+      <h3>{{ _('Compétences techniques') }}</h3>
+      <p>{{ _('Stack : Python, SQL, DBT, Airflow, Snowflake, Azure, Power BI.') }}</p>
     </article>
   </div>
 </section>
 
-<!-- Pourquoi me faire confiance ? -->
-<section class="trust">
-  <div class="card">
-    <h3>Pourquoi me faire confiance ?</h3>
-    <p class="muted">Une approche simple, orientée résultats, qui rassure les entreprises à chaque mission.</p>
+<!-- POURQUOI TRAVAILLER AVEC MOI -->
+<section class="section section--why">
+  <span class="eyebrow">{{ _('VALEUR AJOUTÉE') }}</span>
+  <h2 class="h2--why">{{ _('Pourquoi travailler avec moi ?') }}</h2>
 
-    <ul class="reasons">
-      <li>
-        <img class="trust__icon" src="{{ url_for('static', filename='img/icons/experience.svg') }}" alt="Expérience">
-        <div>
-          <strong>3+ ans d’expérience</strong>
-          en Data Engineering & BI dans l’industrie et les services.
-        </div>
-      </li>
-      <li>
-        <img class="trust__icon" src="{{ url_for('static', filename='img/icons/delivery.svg') }}" alt="Livrables rapides">
-        <div>
-          <strong>Livrables rapides & clairs</strong>
-          MVP Power BI ou pipeline automatisé en moins de 2 semaines.
-        </div>
-      </li>
-      <li>
-        <img class="trust__icon" src="{{ url_for('static', filename='img/icons/cloud.svg') }}" alt="Technos cloud">
-        <div>
-          <strong>Technos cloud modernes</strong>
-          Stack : Power BI, Python, Airflow, Snowflake, BigQuery, DBT.
-        </div>
-      </li>
-    </ul>
+  <ul class="value-list">
+    <li class="value">
+      <div class="value__num">01</div>
+      <h3 class="value__title">{{ _('Expertise \n technique solide') }}</h3>
+      <p class="value__desc">
+        {{ _('Maîtrise des outils modernes : Power BI, SQL, Python, Microsoft Fabric, GCP.\n        Veille continue et bonnes pratiques industrielles.') }}
+      </p>
+    </li>
+
+    <li class="value">
+      <div class="value__num">02</div>
+      <h3 class="value__title">{{ _('Vision \n business') }}</h3>
+      <p class="value__desc">
+        {{ _('Des solutions pensées pour l’usage : alignement avec vos objectifs, restitution claire et actionnable.') }}
+      </p>
+    </li>
+
+    <li class="value">
+      <div class="value__num">03</div>
+      <h3 class="value__title">{{ _('Approche \n end-to-end') }}</h3>
+      <p class="value__desc">
+        {{ _('De l’ingestion à la visualisation : je prends en charge l’ensemble du cycle de vie de la donnée.') }}
+      </p>
+    </li>
+
+    <li class="value">
+      <div class="value__num">04</div>
+      <h3 class="value__title">{{ _('Résultats \n mesurables') }}</h3>
+      <p class="value__desc">
+        {{ _('Moins d’anomalies, plus d’automatisation et des indicateurs fiables pour décider vite.') }}
+      </p>
+    </li>
+  </ul>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section section--certs">
+  <span class="section-label">{{ _('CERTIFICATIONS') }}</span>
+  <div class="container">
+    <h2 class="certs__title">{{ _('Certifié par les leaders du secteur') }}</h2>
+
+    <div class="certs-grid">
+      <!-- Carte 1 -->
+      <article class="cert-card">
+        <div class="cert-card__icon" aria-hidden="true">🎓</div>
+        <h3 class="cert-card__title">{{ _('Microsoft Power BI') }}</h3>
+        <p class="cert-card__meta">
+          <span>{{ _('Data Analyst') }}</span>
+          <span>{{ _('Juillet 2024') }}</span>
+        </p>
+      </article>
+
+      <!-- Carte 2 -->
+      <article class="cert-card">
+        <div class="cert-card__icon" aria-hidden="true">🎓</div>
+        <h3 class="cert-card__title">{{ _('IBM Data Science') }}</h3>
+        <p class="cert-card__meta">
+          <span>{{ _('Professional Certificate') }}</span>
+          <span>{{ _('Avril 2024') }}</span>
+        </p>
+      </article>
+    </div>
   </div>
 </section>
 
-<!-- CTA final -->
-<section class="cta-final" style="margin-top:16px;margin-bottom:8px">
-  <div class="card">
-    <h3 style="margin:0">Prêt à accélérer vos projets data ?</h3>
-    <p class="muted">Discutons de vos besoins et voyons comment transformer vos données en leviers de croissance.</p>
-    <a class="btn" href="{{ url_for('contact.form') }}">Travaillons ensemble</a>
+<!-- PROJETS RÉCENTS -->
+<section class="section projects-block">
+  <span class="section-label">{{ _('RÉALISATIONS') }}</span>
+  <h2 class="section__title">{{ _('Projets récents') }}</h2>
+
+  <div class="projects-grid">
+    {% if projects is defined and projects %}
+      {% for p in projects[:6] %}
+        <article class="project-tile">
+          <span class="tag">{{ (p.tags and p.tags[0]) or _('Projet') }}</span>
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.summary }}</p>
+          <a class="project-link" href="{{ url_for('pages.projet_detail', slug=p.slug) }}">{{ _('Voir le projet') }}</a>
+        </article>
+      {% endfor %}
+    {% else %}
+      <!-- Fallback statique (exemples) -->
+      <article class="project-tile">
+        <span class="tag">{{ _('Data Engineering') }}</span>
+        <h3>{{ _('NBA Analytics avec Docker') }}</h3>
+        <p>{{ _('Intégration de données massives NBA dans PostgreSQL via Docker.') }}</p>
+        <a class="project-link" href="{{ url_for('pages.projets') }}#proj-nba">{{ _('Voir le projet') }}</a>
+      </article>
+
+      <article class="project-tile">
+        <span class="tag">{{ _('Business Intelligence') }}</span>
+        <h3>{{ _('Analyse des performances NBA Lakers') }}</h3>
+        <p>{{ _('Système complet d’analyse via API NBA, PostgreSQL et Power BI.') }}</p>
+        <a class="project-link" href="{{ url_for('pages.projets') }}#proj-pbi">{{ _('Voir le projet') }}</a>
+      </article>
+
+      <article class="project-tile">
+        <span class="tag">{{ _('Data Engineering') }}</span>
+        <h3>{{ _('Analyse Immobilière DVF') }}</h3>
+        <p>{{ _('Architecture médaillon avec Microsoft Fabric sur 20M+ lignes.') }}</p>
+        <a class="project-link" href="{{ url_for('pages.projets') }}#proj-azure">{{ _('Voir le projet') }}</a>
+      </article>
+    {% endif %}
+  </div>
+
+  <div class="projects-cta">
+    <a href="{{ url_for('pages.projets') }}" class="btn btn--primary">{{ _('Voir tous les projets') }}</a>
   </div>
 </section>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  if (!window.gsap) return;
-  gsap.from("#heroTitle", {y: 10, opacity: 0, duration: .5, ease: "power2.out"});
-  gsap.to("#dataLines .data-line", {
-    opacity: .9, duration: .8, stagger: .05, repeat: -1, yoyo: true, delay: .15, ease: "sine.inOut"
-  });
-});
-</script>
 {% endblock %}

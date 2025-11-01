@@ -1,0 +1,824 @@
+# French translations for PROJECT.
+# Copyright (C) 2025
+# This file is distributed under the same license as the PROJECT project.
+# Christophe CAKPO <>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-10-30 19:59+0100\n"
+"PO-Revision-Date: 2025-10-30 20:20+0100\n"
+"Last-Translator: Christophe CAKPO <>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+# ========= Meta / Head =========
+msgid "Christophe CAKPO — Data Engineer & Analyst"
+msgstr "Christophe CAKPO — Data Engineer & Analyst"
+
+msgid "Portfolio de Christophe CAKPO — Data Engineer & Analytics Expert."
+msgstr "Portfolio de Christophe CAKPO — Data Engineer & Analytics Expert."
+
+# ========= Accessibilité / Libellés =========
+msgid "Accueil — Christophe CAKPO"
+msgstr "Accueil — Christophe CAKPO"
+
+msgid "Choix de la langue"
+msgstr "Choix de la langue"
+
+msgid "Ouvrir/fermer le menu"
+msgstr "Ouvrir/fermer le menu"
+
+msgid "Navigation principale"
+msgstr "Navigation principale"
+
+# ========= Navigation =========
+msgid "Accueil"
+msgstr "Accueil"
+
+msgid "Compétences"
+msgstr "Compétences"
+
+msgid "Expériences"
+msgstr "Expériences"
+
+msgid "Projets"
+msgstr "Projets"
+
+msgid "Contact"
+msgstr "Contact"
+
+# ========= CTA section (contact-cta) =========
+msgid "Prêt à collaborer ?"
+msgstr "Prêt à collaborer ?"
+
+msgid "Discutons de la façon dont je peux contribuer à la réussite de vos projets data."
+msgstr "Discutons de la façon dont je peux contribuer à la réussite de vos projets data."
+
+msgid "Contactez-moi"
+msgstr "Contactez-moi"
+
+# ========= Carte contact (footer card) =========
+msgid "Photo"
+msgstr "Photo"
+
+msgid "Data Engineer & Analyst"
+msgstr "Data Engineer & Analyst"
+
+msgid "Réseaux"
+msgstr "Réseaux"
+
+msgid "Formulaire de contact"
+msgstr "Formulaire de contact"
+
+# ========= Footer =========
+msgid "Tous droits réservés"
+msgstr "Tous droits réservés"
+
+# ========= Flash / Messages (contact) =========
+msgid "Votre message n’a pas été envoyé (filtre anti-spam)."
+msgstr "Votre message n’a pas été envoyé (filtre anti-spam)."
+
+msgid "Merci de remplir tous les champs requis."
+msgstr "Merci de remplir tous les champs requis."
+
+msgid "Merci ! Votre message a bien été envoyé."
+msgstr "Merci ! Votre message a bien été envoyé."
+
+msgid "Une erreur est survenue lors de l’envoi de votre message."
+msgstr "Une erreur est survenue lors de l’envoi de votre message."
+
+# ========= Index / Hero =========
+msgid "Bienvenue sur mon portfolio"
+msgstr "Bienvenue sur mon portfolio"
+
+msgid "Data Engineer & Analytics Expert"
+msgstr "Data Engineer & Analytics Expert"
+
+msgid "Je transforme vos données en"
+msgstr "Je transforme vos données en"
+
+msgid "leviers stratégiques"
+msgstr "leviers stratégiques"
+
+msgid "pour fluidifier vos processus et accélérer la prise de décision."
+msgstr "pour fluidifier vos processus et accélérer la prise de décision."
+
+msgid "Téléphone"
+msgstr "Téléphone"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "CV"
+msgstr "CV"
+
+# ========= Index / À propos =========
+msgid "À PROPOS"
+msgstr "À PROPOS"
+
+msgid "Qui suis-je ?"
+msgstr "Qui suis-je ?"
+
+msgid "Je suis"
+msgstr "Je suis"
+
+msgid "Christophe CAKPO"
+msgstr "Christophe CAKPO"
+
+msgid "Data Analyst & Data Engineer, passionné par la"
+msgstr "Data Analyst & Data Engineer, passionné par la"
+
+msgid "mise en valeur de la donnée"
+msgstr "mise en valeur de la donnée"
+
+msgid "et l’automatisation des analyses."
+msgstr "et l’automatisation des analyses."
+
+msgid "Mon périmètre couvre toute la chaîne de valeur :"
+msgstr "Mon périmètre couvre toute la chaîne de valeur :"
+
+msgid "intégration d’APIs"
+msgstr "intégration d’APIs"
+
+msgid "fiabilisation de pipelines"
+msgstr "fiabilisation de pipelines"
+
+msgid "tableaux de bord Power BI"
+msgstr "tableaux de bord Power BI"
+
+msgid "pour une décision rapide et sereine."
+msgstr "pour une décision rapide et sereine."
+
+msgid "Mon objectif"
+msgstr "Mon objectif"
+
+msgid "Faire de vos données de vrais"
+msgstr "Faire de vos données de vrais"
+
+msgid "accélérateurs de performance"
+msgstr "accélérateurs de performance"
+
+msgid "J’allie exigence technique et sens du métier pour servir vos enjeux."
+msgstr "J’allie exigence technique et sens du métier pour servir vos enjeux."
+
+# ========= Index / Expertise =========
+msgid "EXPERTISE"
+msgstr "EXPERTISE"
+
+msgid "Ce que vous trouverez dans ce portfolio"
+msgstr "Ce que vous trouverez dans ce portfolio"
+
+msgid "Data Engineering"
+msgstr "Data Engineering"
+
+msgid "Pipelines automatisés, architectures médaillon, intégrations API et bases de données optimisées."
+msgstr "Pipelines automatisés, architectures médaillon, intégrations API et bases de données optimisées."
+
+msgid "Business Intelligence"
+msgstr "Business Intelligence"
+
+msgid "Dashboards interactifs, suivi de KPIs et visualisations qui parlent au métier."
+msgstr "Dashboards interactifs, suivi de KPIs et visualisations qui parlent au métier."
+
+msgid "Compétences techniques"
+msgstr "Compétences techniques"
+
+msgid "Stack : Python, SQL, DBT, Airflow, Snowflake, Azure, Power BI."
+msgstr "Stack : Python, SQL, DBT, Airflow, Snowflake, Azure, Power BI."
+
+# ========= Index / Pourquoi travailler avec moi =========
+msgid "VALEUR AJOUTÉE"
+msgstr "VALEUR AJOUTÉE"
+
+msgid "Pourquoi travailler avec moi ?"
+msgstr "Pourquoi travailler avec moi ?"
+
+msgid "Expertise \n technique solide"
+msgstr "Expertise \n technique solide"
+
+msgid "Maîtrise des outils modernes : Power BI, SQL, Python, Microsoft Fabric, GCP.\n        Veille continue et bonnes pratiques industrielles."
+msgstr "Maîtrise des outils modernes : Power BI, SQL, Python, Microsoft Fabric, GCP.\n        Veille continue et bonnes pratiques industrielles."
+
+msgid "Vision \n business"
+msgstr "Vision \n business"
+
+msgid "Des solutions pensées pour l’usage : alignement avec vos objectifs, restitution claire et actionnable."
+msgstr "Des solutions pensées pour l’usage : alignement avec vos objectifs, restitution claire et actionnable."
+
+msgid "Approche \n end-to-end"
+msgstr "Approche \n end-to-end"
+
+msgid "De l’ingestion à la visualisation : je prends en charge l’ensemble du cycle de vie de la donnée."
+msgstr "De l’ingestion à la visualisation : je prends en charge l’ensemble du cycle de vie de la donnée."
+
+msgid "Résultats \n mesurables"
+msgstr "Résultats \n mesurables"
+
+msgid "Moins d’anomalies, plus d’automatisation et des indicateurs fiables pour décider vite."
+msgstr "Moins d’anomalies, plus d’automatisation et des indicateurs fiables pour décider vite."
+
+# ========= Index / Certifications =========
+msgid "CERTIFICATIONS"
+msgstr "CERTIFICATIONS"
+
+msgid "Certifié par les leaders du secteur"
+msgstr "Certifié par les leaders du secteur"
+
+msgid "Microsoft Power BI"
+msgstr "Microsoft Power BI"
+
+msgid "Data Analyst"
+msgstr "Data Analyst"
+
+msgid "Juillet 2024"
+msgstr "Juillet 2024"
+
+msgid "IBM Data Science"
+msgstr "IBM Data Science"
+
+msgid "Professional Certificate"
+msgstr "Professional Certificate"
+
+msgid "Avril 2024"
+msgstr "Avril 2024"
+
+# ========= Index / Projets =========
+msgid "RÉALISATIONS"
+msgstr "RÉALISATIONS"
+
+msgid "Projets récents"
+msgstr "Projets récents"
+
+msgid "Projet"
+msgstr "Projet"
+
+msgid "Voir le projet"
+msgstr "Voir le projet"
+
+msgid "NBA Analytics avec Docker"
+msgstr "NBA Analytics avec Docker"
+
+msgid "Intégration de données massives NBA dans PostgreSQL via Docker."
+msgstr "Intégration de données massives NBA dans PostgreSQL via Docker."
+
+msgid "Analyse des performances NBA Lakers"
+msgstr "Analyse des performances NBA Lakers"
+
+msgid "Système complet d’analyse via API NBA, PostgreSQL et Power BI."
+msgstr "Système complet d’analyse via API NBA, PostgreSQL et Power BI."
+
+msgid "Analyse Immobilière DVF"
+msgstr "Analyse Immobilière DVF"
+
+msgid "Architecture médaillon avec Microsoft Fabric sur 20M+ lignes."
+msgstr "Architecture médaillon avec Microsoft Fabric sur 20M+ lignes."
+
+msgid "Voir tous les projets"
+msgstr "Voir tous les projets"
+
+#: templates/competence.html
+msgid "Compétences — Christophe CAKPO"
+msgstr "Compétences — Christophe CAKPO"
+
+msgid "Mon profil"
+msgstr "Mon profil"
+
+msgid "Compétences & Parcours"
+msgstr "Compétences & Parcours"
+
+msgid "Double casquette ingénierie et analytics pour fiabiliser la donnée, industrialiser les flux et livrer des tableaux de bord utiles avec Power BI."
+msgstr "Double casquette ingénierie et analytics pour fiabiliser la donnée, industrialiser les flux et livrer des tableaux de bord utiles avec Power BI."
+
+msgid "Stack technique"
+msgstr "Stack technique"
+
+msgid "Compétences Techniques"
+msgstr "Compétences Techniques"
+
+msgid "Analyse & Visualisation"
+msgstr "Analyse & Visualisation"
+
+msgid "Modélisation sémantique, DAX avancé, data storytelling, design de KPI."
+msgstr "Modélisation sémantique, DAX avancé, data storytelling, design de KPI."
+
+msgid "Bases de Données & SQL"
+msgstr "Bases de Données & SQL"
+
+msgid "PostgreSQL, MySQL, SQL Server — schémas en étoile, optimisation de requêtes & index."
+msgstr "PostgreSQL, MySQL, SQL Server — schémas en étoile, optimisation de requêtes & index."
+
+msgid "Python"
+msgstr "Python"
+
+msgid "Pandas, intégration d’APIs, automatisations, tests & packaging."
+msgstr "Pandas, intégration d’APIs, automatisations, tests & packaging."
+
+msgid "Cloud & Data Engineering"
+msgstr "Cloud & Data Engineering"
+
+msgid "Azure & Microsoft Fabric, dbt, Airflow, Docker — pipelines robustes et maintenables."
+msgstr "Azure & Microsoft Fabric, dbt, Airflow, Docker — pipelines robustes et maintenables."
+
+msgid "DataOps & Qualité"
+msgstr "DataOps & Qualité"
+
+msgid "CI/CD, tests de données, surveillance & alertes, fiabilité de bout en bout."
+msgstr "CI/CD, tests de données, surveillance & alertes, fiabilité de bout en bout."
+
+msgid "Technologies complémentaires"
+msgstr "Technologies complémentaires"
+
+msgid "Autres Connaissances"
+msgstr "Autres Connaissances"
+
+msgid "Technologies pratiquées ponctuellement ou consolidées au fil des missions."
+msgstr "Technologies pratiquées ponctuellement ou consolidées au fil des missions."
+
+msgid "Outils & Automatisation"
+msgstr "Outils & Automatisation"
+
+msgid "Bases NoSQL & Cloud"
+msgstr "Bases NoSQL & Cloud"
+
+msgid "Compétences transverses"
+msgstr "Compétences transverses"
+
+msgid "Soft Skills & Langues"
+msgstr "Soft Skills & Langues"
+
+msgid "Analyse & Synthèse"
+msgstr "Analyse & Synthèse"
+
+msgid "De la donnée brute à des décisions claires et mesurables."
+msgstr "De la donnée brute à des décisions claires et mesurables."
+
+msgid "Communication"
+msgstr "Communication"
+
+msgid "Interface fluide entre métiers et équipes data, pédagogie orientée valeur."
+msgstr "Interface fluide entre métiers et équipes data, pédagogie orientée valeur."
+
+msgid "Autonomie & Proactivité"
+msgstr "Autonomie & Proactivité"
+
+msgid "Pilotage de projets end-to-end, livraisons itératives et rapides."
+msgstr "Pilotage de projets end-to-end, livraisons itératives et rapides."
+
+msgid "Résolution de problèmes"
+msgstr "Résolution de problèmes"
+
+msgid "Automatisation, réduction des anomalies et amélioration continue."
+msgstr "Automatisation, réduction des anomalies et amélioration continue."
+
+msgid "Langues"
+msgstr "Langues"
+
+msgid "Français"
+msgstr "Français"
+
+msgid "Natif"
+msgstr "Natif"
+
+msgid "Anglais"
+msgstr "Anglais"
+
+msgid "B2 — Professionnel"
+msgstr "B2 — Professionnel"
+
+msgid "Certifications"
+msgstr "Certifications"
+
+msgid "Certifications Professionnelles"
+msgstr "Certifications Professionnelles"
+
+msgid "Certification Microsoft validant la capacité à transformer des données en informations actionnables, à concevoir des visualisations impactantes et à piloter la performance avec Power BI et Power Query."
+msgstr "Certification Microsoft validant la capacité à transformer des données en informations actionnables, à concevoir des visualisations impactantes et à piloter la performance avec Power BI et Power Query."
+
+msgid "Voir le certificat →"
+msgstr "Voir le certificat →"
+
+msgid "Parcours IBM couvrant l’ensemble de la stack Data Science : manipulation de données en Python, analyse exploratoire, modélisation supervisée & non supervisée, et mise en production de pipelines automatisés."
+msgstr "Parcours IBM couvrant l’ensemble de la stack Data Science : manipulation de données en Python, analyse exploratoire, modélisation supervisée & non supervisée, et mise en production de pipelines automatisés."
+
+# ========== EXPERIENCES (page experiences.html) ==========
+
+msgid "Expériences — Christophe CAKPO"
+msgstr "Expériences — Christophe CAKPO"
+
+msgid "Mon parcours"
+msgstr "Mon parcours"
+
+msgid "Expériences Professionnelles"
+msgstr "Expériences Professionnelles"
+
+# Hero lead — phrases éclatées (sans balises HTML)
+msgid "Un parcours mêlant"
+msgstr "Un parcours mêlant"
+
+msgid "data engineering"
+msgstr "data engineering"
+
+msgid "business intelligence"
+msgstr "business intelligence"
+
+msgid "et amélioration continue orientée impact métier."
+msgstr "et amélioration continue orientée impact métier."
+
+# --- Experience 1 (Bosch) ---
+msgid "Data Analyst / Data Engineer"
+msgstr "Data Analyst / Data Engineer"
+
+msgid "janv. 2023 — août. 2025"
+msgstr "janv. 2023 — août. 2025"
+
+msgid "Paris, France"
+msgstr "Paris, France"
+
+msgid "Mission axée sur l’amélioration de l’expérience client et le pilotage de la performance commerciale via l’analyse NPS et des tableaux de bord stratégiques."
+msgstr "Mission axée sur l’amélioration de l’expérience client et le pilotage de la performance commerciale via l’analyse NPS et des tableaux de bord stratégiques."
+
+msgid "Tableaux de bord Power BI :"
+msgstr "Tableaux de bord Power BI :"
+
+msgid "KPIs clairs pour le pilotage des ventes et du NPS."
+msgstr "KPIs clairs pour le pilotage des ventes et du NPS."
+
+msgid "Data pipeline :"
+msgstr "Data pipeline :"
+
+msgid "consolidation multi-sources avec SQL & Python."
+msgstr "consolidation multi-sources avec SQL & Python."
+
+msgid "Automatisation ETL :"
+msgstr "Automatisation ETL :"
+
+msgid "Airflow, dbt, BigQuery & Cloud Storage."
+msgstr "Airflow, dbt, BigQuery & Cloud Storage."
+
+msgid "Suivi qualité & monitoring :"
+msgstr "Suivi qualité & monitoring :"
+
+msgid "contrôle des flux et boucle avec le SAV."
+msgstr "contrôle des flux et boucle avec le SAV."
+
+# Ligne résultats (les % sont désormais en HTML, pas dans la traduction)
+msgid "de ventes (sept–déc vs N-1) · +8 pts NPS en 6 mois · −30"
+msgstr "de ventes (sept–déc vs N-1) · +8 pts NPS en 6 mois · −30"
+
+msgid "de temps de reporting"
+msgstr "de temps de reporting"
+
+# --- Experience 2 (Neurones IT) ---
+msgid "Data Manager (Monitoring Databases)"
+msgstr "Data Manager (Monitoring Databases)"
+
+msgid "oct. 2022 — janv. 2023"
+msgstr "oct. 2022 — janv. 2023"
+
+msgid "Mise en place d’un monitoring proactif pour anticiper les dégradations et optimiser la performance des bases de données critiques."
+msgstr "Mise en place d’un monitoring proactif pour anticiper les dégradations et optimiser la performance des bases de données critiques."
+
+msgid "Observabilité :"
+msgstr "Observabilité :"
+
+msgid "configuration Dynatrace (transactions, temps de réponse)."
+msgstr "configuration Dynatrace (transactions, temps de réponse)."
+
+msgid "Diagnostics :"
+msgstr "Diagnostics :"
+
+msgid "analyse de logs et détection des goulots d’étranglement."
+msgstr "analyse de logs et détection des goulots d’étranglement."
+
+msgid "Optimisation :"
+msgstr "Optimisation :"
+
+msgid "recommandations SQL et allocation fine des ressources."
+msgstr "recommandations SQL et allocation fine des ressources."
+
+msgid "sur les temps de réponse · −40"
+msgstr "sur les temps de réponse · −40"
+
+msgid "d’incidents critiques"
+msgstr "d’incidents critiques"
+
+# ========== PROJETS (page projets.html) ==========
+
+# Head / Hero
+msgid "Mes Projets Data — Christophe CAKPO"
+msgstr "Mes Projets Data — Christophe CAKPO"
+
+msgid "Portfolio"
+msgstr "Portfolio"
+
+msgid "Mes Projets Data"
+msgstr "Mes Projets Data"
+
+msgid "Une sélection de projets démontrant mes compétences en Data Engineering, Business Intelligence et analyse de données."
+msgstr "Une sélection de projets démontrant mes compétences en Data Engineering, Business Intelligence et analyse de données."
+
+# --------- Projet 1 : NBA Analytics ----------
+msgid "Data Engineering"
+msgstr "Data Engineering"
+
+msgid "NBA Analytics avec Docker & PostgreSQL"
+msgstr "NBA Analytics avec Docker & PostgreSQL"
+
+msgid "Docker | PostgreSQL | Python | Data Integration"
+msgstr "Docker | PostgreSQL | Python | Data Integration"
+
+msgid "Contexte & Objectifs"
+msgstr "Contexte & Objectifs"
+
+msgid "Le Défi"
+msgstr "Le Défi"
+
+msgid "Intégrer un volume important de données NBA (16 CSV) dans PostgreSQL conteneurisé avec Docker, en automatisant l’import et en garantissant l’intégrité des données."
+msgstr "Intégrer un volume important de données NBA (16 CSV) dans PostgreSQL conteneurisé avec Docker, en automatisant l’import et en garantissant l’intégrité des données."
+
+msgid "L’Objectif"
+msgstr "L’Objectif"
+
+msgid "Construire une base relationnelle robuste permettant des analyses sur les joueurs, équipes et matchs (1980 → 2018) et préparer le terrain pour la BI."
+msgstr "Construire une base relationnelle robuste permettant des analyses sur les joueurs, équipes et matchs (1980 → 2018) et préparer le terrain pour la BI."
+
+msgid "Architecture & Pipeline"
+msgstr "Architecture & Pipeline"
+
+msgid "Schéma d’architecture du pipeline NBA"
+msgstr "Schéma d’architecture du pipeline NBA"
+
+msgid "Workflow d’Intégration"
+msgstr "Workflow d’Intégration"
+
+msgid "Déploiement d’un conteneur PostgreSQL via"
+msgstr "Déploiement d’un conteneur PostgreSQL via"
+
+msgid "Création des tables + contraintes d’intégrité"
+msgstr "Création des tables + contraintes d’intégrité"
+
+msgid "Scripts Python d’import dédiés (1 fichier = 1 table)"
+msgstr "Scripts Python d’import dédiés (1 fichier = 1 table)"
+
+msgid "Nettoyage/validation pour assurer l’intégrité référentielle"
+msgstr "Nettoyage/validation pour assurer l’intégrité référentielle"
+
+msgid "Analyses exploratoires dans Jupyter Notebook"
+msgstr "Analyses exploratoires dans Jupyter Notebook"
+
+msgid "Analyses Réalisées"
+msgstr "Analyses Réalisées"
+
+msgid "Statistiques joueurs :"
+msgstr "Statistiques joueurs :"
+
+msgid "agrégats & KPIs combinés"
+msgstr "agrégats & KPIs combinés"
+
+msgid "Matchs gagnants 2015 :"
+msgstr "Matchs gagnants 2015 :"
+
+msgid "équipes victorieuses par rencontre"
+msgstr "équipes victorieuses par rencontre"
+
+msgid "Classement par victoires :"
+msgstr "Classement par victoires :"
+
+msgid "calcul par équipe (2018)"
+msgstr "calcul par équipe (2018)"
+
+msgid "Performances historiques :"
+msgstr "Performances historiques :"
+
+msgid "meilleurs joueurs (1980–2000)"
+msgstr "meilleurs joueurs (1980–2000)"
+
+msgid "Comparaisons :"
+msgstr "Comparaisons :"
+
+msgid "1980 vs 2015 (tendances)"
+msgstr "1980 vs 2015 (tendances)"
+
+msgid "Bonus :"
+msgstr "Bonus :"
+
+msgid "tendances de performance des équipes"
+msgstr "tendances de performance des équipes"
+
+msgid "Technologies & Architecture"
+msgstr "Technologies & Architecture"
+
+msgid "Tables / CSV intégrés"
+msgstr "Tables / CSV intégrés"
+
+msgid "Données NBA (1980–2018)"
+msgstr "Données NBA (1980–2018)"
+
+msgid "Automatisation Python"
+msgstr "Automatisation Python"
+
+msgid "💡 Compétences Démontrées"
+msgstr "💡 Compétences Démontrées"
+
+msgid "Conteneurisation avec Docker (environnements reproductibles)"
+msgstr "Conteneurisation avec Docker (environnements reproductibles)"
+
+msgid "Modélisation relationnelle & contraintes d’intégrité"
+msgstr "Modélisation relationnelle & contraintes d’intégrité"
+
+msgid "ETL automatisé en Python (pandas, psycopg2)"
+msgstr "ETL automatisé en Python (pandas, psycopg2)"
+
+msgid "Requêtes SQL avancées pour analyses statistiques"
+msgstr "Requêtes SQL avancées pour analyses statistiques"
+
+msgid "Nettoyage & validation de données massives"
+msgstr "Nettoyage & validation de données massives"
+
+msgid "Voir le code"
+msgstr "Voir le code"
+
+msgid "Documentation"
+msgstr "Documentation"
+
+# --------- Projet 2 : Power BI & Fabric ----------
+msgid "Business Intelligence"
+msgstr "Business Intelligence"
+
+msgid "Sales Performance avec Power BI & Microsoft Fabric"
+msgstr "Sales Performance avec Power BI & Microsoft Fabric"
+
+msgid "Power BI | Fabric | DAX | SQL"
+msgstr "Power BI | Fabric | DAX | SQL"
+
+msgid "Architecture & Modèle"
+msgstr "Architecture & Modèle"
+
+msgid "Lakehouse Fabric → Modèle sémantique → Dashboards"
+msgstr "Lakehouse Fabric → Modèle sémantique → Dashboards"
+
+msgid "Résultats & KPIs"
+msgstr "Résultats & KPIs"
+
+msgid "Temps de reporting"
+msgstr "Temps de reporting"
+
+msgid "Taux de conversion"
+msgstr "Taux de conversion"
+
+msgid "Mesures DAX clés"
+msgstr "Mesures DAX clés"
+
+msgid "Ingestion Lakehouse Fabric / Dataflows Gen2"
+msgstr "Ingestion Lakehouse Fabric / Dataflows Gen2"
+
+msgid "Design de dashboards Power BI orientés métier"
+msgstr "Design de dashboards Power BI orientés métier"
+
+# --------- Projet 3 : Azure ----------
+msgid "Cloud / Data Platform"
+msgstr "Cloud / Data Platform"
+
+msgid "Pipeline temps quasi-réel sur Azure"
+msgstr "Pipeline temps quasi-réel sur Azure"
+
+msgid "Azure Data Factory | Data Lake Gen2 | Synapse | Databricks | Power BI"
+msgstr "Azure Data Factory | Data Lake Gen2 | Synapse | Databricks | Power BI"
+
+msgid "Architecture & Orchestration"
+msgstr "Architecture & Orchestration"
+
+msgid "Flux d’ingestion & orchestration sur Azure"
+msgstr "Flux d’ingestion & orchestration sur Azure"
+
+msgid "Pipeline & Qualité de données"
+msgstr "Pipeline & Qualité de données"
+
+msgid "Validation & transformations (Delta / notebooks)"
+msgstr "Validation & transformations (Delta / notebooks)"
+
+msgid "Orchestration Azure Data Factory (triggers horaires + dépendances)."
+msgstr "Orchestration Azure Data Factory (triggers horaires + dépendances)."
+
+msgid "Zone Bronze : ingestion brute dans ADLS Gen2 (parquet/csv, partitionnement)."
+msgstr "Zone Bronze : ingestion brute dans ADLS Gen2 (parquet/csv, partitionnement)."
+
+msgid "Zone Silver : nettoyage, normalisation, dédoublonnage (notebooks Databricks / Synapse)."
+msgstr "Zone Silver : nettoyage, normalisation, dédoublonnage (notebooks Databricks / Synapse)."
+
+msgid "Zone Gold : tables analytiques Delta pour Power BI."
+msgstr "Zone Gold : tables analytiques Delta pour Power BI."
+
+msgid "Contrôles qualité : schéma, complétude, seuils métier, journalisation & alerting."
+msgstr "Contrôles qualité : schéma, complétude, seuils métier, journalisation & alerting."
+
+msgid "Temps de mise à dispo des données"
+msgstr "Temps de mise à dispo des données"
+
+msgid "Taux de succès des runs"
+msgstr "Taux de succès des runs"
+
+msgid "Adoption des dashboards"
+msgstr "Adoption des dashboards"
+
+msgid "Architecture médaillon et Delta Lake sur Azure."
+msgstr "Architecture médaillon et Delta Lake sur Azure."
+
+msgid "Orchestration ADF & monitoring (retry, alertes, logs)."
+msgstr "Orchestration ADF & monitoring (retry, alertes, logs)."
+
+msgid "Transformations distribuées (Databricks / Spark)."
+msgstr "Transformations distribuées (Databricks / Spark)."
+
+msgid "Modélisation analytique pour Power BI (tables Gold)."
+msgstr "Modélisation analytique pour Power BI (tables Gold)."
+
+msgid "Gouvernance & sécurité (RBAC, Key Vault, networking)."
+msgstr "Gouvernance & sécurité (RBAC, Key Vault, networking)."
+
+# ========== CONTACT (page contact.html) ==========
+
+msgid "Contact — Christophe CAKPO"
+msgstr "Contact — Christophe CAKPO"
+
+msgid "Me contacter"
+msgstr "Me contacter"
+
+msgid "Parlons de vos projets data"
+msgstr "Parlons de vos projets data"
+
+msgid "Besoin d’un"
+msgstr "Besoin d’un"
+
+msgid "pipeline robuste"
+msgstr "pipeline robuste"
+
+msgid "d’un"
+msgstr "d’un"
+
+msgid "dashboard Power BI"
+msgstr "dashboard Power BI"
+
+msgid "impactant"
+msgstr "impactant"
+
+msgid "ou d’un"
+msgstr "ou d’un"
+
+msgid "conseil Data Engineering"
+msgstr "conseil Data Engineering"
+
+msgid "? Envoyez-moi un message."
+msgstr "? Envoyez-moi un message."
+
+msgid "Photo de profil"
+msgstr "Photo de profil"
+
+msgid "Data Engineer & Analyst"
+msgstr "Data Engineer & Analyst"
+
+msgid "Réseaux"
+msgstr "Réseaux"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Nom complet"
+msgstr "Nom complet"
+
+msgid "Votre nom"
+msgstr "Votre nom"
+
+msgid "Objet"
+msgstr "Objet"
+
+msgid "Sujet de votre message"
+msgstr "Sujet de votre message"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Écrivez votre message…"
+msgstr "Écrivez votre message…"
+
+msgid "J’accepte d’être recontacté au sujet de cette demande."
+msgstr "J’accepte d’être recontacté au sujet de cette demande."
+
+msgid "Envoyer"
+msgstr "Envoyer"
+
+msgid "Email direct"
+msgstr "Email direct"

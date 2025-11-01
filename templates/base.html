@@ -1,108 +1,259 @@
 <!doctype html>
-<html lang="fr" data-theme="dark">
+<html lang="{{ get_locale() }}">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}DataCraft Studio – Christophe CAKPO{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}{{ _('Christophe CAKPO — Data Engineer & Analyst') }}{% endblock %}</title>
+  <meta name="description" content="{{ _('Portfolio de Christophe CAKPO — Data Engineer & Analytics Expert.') }}">
 
   <!-- Favicon & Fonts -->
-  <link rel="icon" href="{{ url_for('static', filename='img/logo.svg') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="{{ url_for('static', filename='img/logo-aime.svg') }}">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/datacraft-studio.css') }}"> 
-  <!-- <link rel="preload"
-      href="{{ url_for('static', filename='css/datacraft-studio.min.css') }}?v=4"
-      as="style">
-  <link rel="stylesheet"
-      href="{{ url_for('static', filename='css/datacraft-studio.min.css') }}?v=4"
-      media="all">-->
-  {% block extra_head %}{% endblock %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-  <!-- Scripts globaux -->
-  <script defer src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  {% block extra_head %}{% endblock %}
 </head>
 
 <body>
 <header class="header">
   <div class="container header__inner">
-    <!-- Brand -->
-    <div class="brand">
-      <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="DataCraft logo" height="28">
-      <strong>DataCraft Studio</strong>
-    </div>
 
-    {# endpoint courant pour l’état actif #}
+    <!-- Brand -->
+    <a class="brand" href="{{ url_for('pages.index') }}" aria-label="{{ _('Accueil — Christophe CAKPO') }}">
+      <img src="{{ url_for('static', filename='img/about.jpeg') }}" alt="{{ _('Logo') }}" />
+      <strong>Christophe CAKPO</strong>
+    </a>
+
     {% set ep = (request.endpoint or '') %}
 
     <!-- Bouton menu (mobile) -->
-    <div class="menu-toggle" onclick="document.querySelector('.nav-pills').classList.toggle('active')" role="button" aria-label="Ouvrir/fermer le menu" aria-controls="main-nav" aria-expanded="false">
-      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-    </div>
+    <button class="menu-toggle" aria-label="{{ _('Ouvrir/fermer le menu') }}" aria-controls="main-nav" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+    </button>
 
-    <!-- Navigation -->
-    <nav id="main-nav" class="nav-pills" aria-label="Navigation principale">
+    <!-- Navigation principale -->
+    <nav id="main-nav" class="nav-pills" aria-label="{{ _('Navigation principale') }}">
       <a class="pill {{ 'active' if ep=='pages.index' else '' }}" href="{{ url_for('pages.index') }}">
-        <span class="pill__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5Z"/></svg>
-        </span>
-        <span>Accueil</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3l9-8z" fill="currentColor"/></svg>
+        {{ _('Accueil') }}
       </a>
 
-      <a class="pill {{ 'active' if ep=='pages.apropos' else '' }}" href="{{ url_for('pages.apropos') }}">
-        <span class="pill__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5v2h18v-2c0-2.5-4-5-9-5Z"/></svg>
-        </span>
-        <span>À propos</span>
+      <a class="pill {{ 'active' if ep=='pages.competences' else '' }}" href="{{ url_for('pages.competences') }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0H5z" fill="currentColor"/></svg>
+        {{ _('Compétences') }}
+      </a>
+
+      <a class="pill {{ 'active' if ep=='pages.experiences' else '' }}" href="{{ url_for('pages.experiences') }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4h4a2 2 0 012 2v2h4a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V10a2 2 0 012-2h4V6a2 2 0 012-2zm0 4h4V6h-4v2z" fill="currentColor"/></svg>
+        {{ _('Expériences') }}
       </a>
 
       <a class="pill {{ 'active' if ep=='pages.projets' else '' }}" href="{{ url_for('pages.projets') }}">
-        <span class="pill__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 6h6l2 2h10v10a2 2 0 0 1-2 2H3Z"/><path d="M3 6v12a2 2 0 0 0 2 2h14"/></svg>
-        </span>
-        <span>Projets</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7zm4-4h8a2 2 0 012 2v1H6V5a2 2 0 012-2z" fill="currentColor"/></svg>
+        {{ _('Projets') }}
       </a>
 
-      <a class="pill {{ 'active' if ep=='pages.services' else '' }}" href="{{ url_for('pages.services') }}">
-        <span class="pill__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M13 2 3 14h8l-1 8 11-14h-8l0-6Z"/></svg>
-        </span>
-        <span>Service</span>
+      <a class="pill {{ 'active' if ep=='pages.contact' else '' }}" href="{{ url_for('pages.contact') }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v1l10 6 10-6V6a2 2 0 00-2-2zm0 6.2l-8 4.8-8-4.8V18a2 2 0 002 2h12a2 2 0 002-2v-7.8z" fill="currentColor"/></svg>
+        {{ _('Contact') }}
       </a>
 
-      <a class="pill {{ 'active' if ep.startswith('contact.') else '' }}" href="{{ url_for('contact.form') }}">
-        <span class="pill__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="m3 7 9 6 9-6"/></svg>
-        </span>
-        <span>Contact</span>
-      </a>
+      <!-- Sélecteur de langue (placé après Contact) -->
+      <div class="nav-lang">
+        <nav class="lang-toggle" aria-label="{{ _('Choix de la langue') }}">
+          {% set current = get_locale()|string %}
+          <div class="segmented {{ 'is-fr' if current.startswith('fr') else 'is-en' }}" role="tablist">
+            <a
+              href="{{ url_for('pages.set_language', lang='fr', next=request.full_path) }}"
+              class="segmented__btn"
+              role="tab"
+              hreflang="fr"
+              aria-selected="{{ 'true' if current.startswith('fr') else 'false' }}"
+              aria-current="{{ 'true' if current.startswith('fr') else 'false' }}"
+            >FR</a>
+
+            <a
+              href="{{ url_for('pages.set_language', lang='en', next=request.full_path) }}"
+              class="segmented__btn"
+              role="tab"
+              hreflang="en"
+              aria-selected="{{ 'true' if current.startswith('en') else 'false' }}"
+              aria-current="{{ 'true' if current.startswith('en') else 'false' }}"
+            >EN</a>
+
+            <span class="segmented__thumb" aria-hidden="true"></span>
+          </div>
+        </nav>
+      </div>
     </nav>
   </div>
 </header>
 
-<main class="container" style="padding:28px 0">
+<main id="main" class="container mainpad">
   {% block flash_area %}
-    {% include "_flash.html" %}
+    {% if (request.endpoint or '') != 'pages.contact' %}
+      {% include "_flash.html" %}
+    {% endif %}
   {% endblock %}
-
   {% block content %}{% endblock %}
 </main>
 
-<footer>
-  <div class="container">
-    © <span id="y"></span> DataCraft Studio — Christophe CAKPO
+<!-- ===== CTA CONTACT PLEINE LARGEUR ===== -->
+<section class="contact-cta full-bleed" id="contact-cta">
+  <div class="contact-cta__inner">
+    <h2 class="contact-cta__title">{{ _('Prêt à collaborer ?') }}</h2>
+    <p class="contact-cta__lead">
+      {{ _("Discutons de la façon dont je peux contribuer à la réussite de vos projets data.") }}
+    </p>
+    <div class="contact-cta__actions">
+      <a class="btn btn--ghost contact-cta__btn" href="{{ url_for('pages.contact') }}">
+        🚀 {{ _('Contactez-moi') }}
+      </a>
+      <a class="btn btn--outline-light contact-cta__btn" target="_blank" href="https://www.linkedin.com/">
+        LinkedIn
+      </a>
+    </div>
   </div>
-  <script>
-    // année dynamique
-    document.getElementById('y').textContent = new Date().getFullYear();
+</section>
 
-    // Accessibilité : ferme le menu après clic sur un lien (mobile)
-    const nav = document.querySelector('.nav-pills');
-    nav?.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => nav.classList.remove('active'));
-    });
-  </script>
+<!-- ===== CARTE CONTACT (bande noire) ===== -->
+<section class="contact-card full-bleed">
+  <div class="contact-card__inner">
+    <div class="contact-card__id">
+      <img class="contact-card__avatar" src="{{ url_for('static', filename='img/about.jpeg') }}" alt="{{ _('Photo') }}">
+      <div>
+        <p class="contact-card__name">Christophe CAKPO</p>
+        <p class="contact-card__role">{{ _('Data Engineer & Analyst') }}</p>
+      </div>
+    </div>
+
+    <nav class="contact-card__links" aria-label="{{ _('Réseaux') }}">
+      <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" class="social-icon linkedin">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zM8 19H5V9h3v10zM6.5 7.7a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM19 19h-3v-5.2c0-1.24-.02-2.83-1.73-2.83-1.73 0-2 1.35-2 2.74V19h-3V9h2.88v1.37h.04c.4-.75 1.37-1.54 2.83-1.54C18 8.83 19 10.33 19 12.9V19z"/></svg>
+      </a>
+      <a href="https://github.com/" target="_blank" aria-label="GitHub" class="social-icon github">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.7.5.8 5.4.8 11.7c0 4.9 3.2 9 7.6 10.4.6.1.8-.2.8-.5v-1.7c-3.1.7-3.8-1.4-3.8-1.4-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .8.1-.7.3-1.1.6-1.4-2.5-.3-5.1-1.3-5.1-5.9 0-1.3.5-2.3 1.1-3.2-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3.2 1.2a10.9 10.9 0 015.9 0c2.3-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.9 1.1 1.9 1.1 3.2 0 4.6-2.6 5.6-5.1 5.9.3.3.6.9.6 1.8v2.7c0 .3.2.6.8.5 4.4-1.5 7.6-5.5 7.6-10.4C23.2 5.4 18.3.5 12 .5z"/></svg>
+      </a>
+      <a href="mailto:cakpochristophes91@gmail.com" aria-label="{{ _('Email') }}" class="social-icon email">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v1l10 6 10-6V6a2 2 0 00-2-2zm0 6.2l-8 4.8-8-4.8V18a2 2 0 002 2h12a2 2 0 002-2v-7.8z"/></svg>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<footer class="footer">
+  © <span id="y"></span> Christophe CAKPO — {{ _('Tous droits réservés') }}
 </footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav-pills');
+  const setOpen = (v) => {
+    if(!nav||!toggle) return;
+    nav.classList.toggle('active', v);
+    toggle.setAttribute('aria-expanded', v ? 'true' : 'false');
+  };
+  if (toggle) {
+    toggle.addEventListener('click', () => setOpen(!nav.classList.contains('active')));
+  }
+  nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+</script>
+
+<script>
+  // Effet "scrolled" sur le header
+  const hdr = document.querySelector('.header');
+  const onScroll = () => {
+    if (!hdr) return;
+    if (window.scrollY > 10) hdr.classList.add('scrolled');
+    else hdr.classList.remove('scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+
+<script>
+  (function(){
+    const els = document.querySelectorAll('.cert-block');
+    if (!('IntersectionObserver' in window) || !els.length) {
+      els.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+
+<script>
+  // Observer pour .fade-in
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: .15 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+
+<script>
+  // Fade-in au scroll pour .reveal
+  (function(){
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('inview'); }
+      });
+    }, {threshold: .12, rootMargin: "0px 0px -40px 0px"});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  })();
+</script>
+
+<script>
+/* Animation des barres de compétences au scroll */
+(function () {
+  const items = document.querySelectorAll('.skill');
+  if (!items.length) return;
+
+  // Fallback si IntersectionObserver indisponible
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('skill--inview'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('skill--inview');
+        obs.unobserve(e.target); // anime une seule fois
+      }
+    });
+  }, { threshold: 0.25, rootMargin: "0px 0px -10% 0px" });
+
+  items.forEach(el => io.observe(el));
+})();
+</script>
+<script>
+  const avatar = document.querySelector('.hero__avatar img');
+  if (avatar) {
+    window.addEventListener('scroll', () => {
+      const y = Math.min(12, window.scrollY * 0.07); // max 12px
+      avatar.style.translate = `0 ${-y}px`;
+    }, { passive: true });
+  }
+</script>
 </body>
 </html>
