@@ -2005,3 +2005,41 @@ html[data-theme="dark"] .segmented{
     width: auto;
   }
 }
+
+/* === FIX 1 : FR | EN bien contenu dans le menu mobile === */
+@media (max-width: 860px){
+  .nav-pills{
+    width: 240px;            /* un peu plus large pour respirer */
+    overflow: hidden;        /* évite tout débordement visuel */
+  }
+  .nav-pills .nav-lang{
+    width: 100%;
+    padding: 6px 6px 2px;    /* colle mieux au bord */
+    margin: 0;
+  }
+  .nav-pills .lang-toggle{ width: 100%; }
+  .nav-pills .segmented{
+    width: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: none;        /* l’ombre faisait “dépasser” visuellement */
+  }
+  .nav-pills .segmented__btn{
+    padding: .55rem .9rem;
+    font-size: .9rem;
+  }
+}
+
+/* === FIX 2 : boutons CTA non full-width en mobile === */
+@media (max-width: 600px){
+  .contact-cta__actions{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    justify-content: center;
+  }
+  .contact-cta__actions .btn{
+    width: auto;             /* ne force plus la pleine largeur */
+    justify-content: center;
+  }
+}
