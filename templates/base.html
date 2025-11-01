@@ -255,5 +255,33 @@
     }, { passive: true });
   }
 </script>
+
+<script>
+  (function(){
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav-pills');
+
+    // Fermer si on clique en dehors
+    document.addEventListener('click', (e) => {
+      if (!nav || !toggle) return;
+      const opened = nav.classList.contains('active');
+      if (!opened) return;
+      const clickInside = nav.contains(e.target) || toggle.contains(e.target);
+      if (!clickInside) {
+        nav.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Fermer avec ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav?.classList.contains('active')) {
+        nav.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus?.();
+      }
+    });
+  })();
+</script>
 </body>
 </html>
