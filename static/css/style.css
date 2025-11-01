@@ -2067,3 +2067,34 @@ html[data-theme="dark"] .segmented{
   /* ou, si tu préfères chacun sur toute la ligne : décommente la ligne suivante */
   /* .contact-cta__actions .btn { width:100%; } */
 }
+
+/* === Harmonisation des boutons du CTA "Prêt à collaborer ?" === */
+.contact-cta__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.contact-cta__actions .btn {
+  flex: 1 1 160px;               /* largeur fluide mais équilibrée */
+  max-width: 200px;              /* évite les boutons trop longs */
+  text-align: center;
+  padding: 12px 18px;
+  border-radius: 50px;           /* arrondi plus doux */
+  font-size: 16px;
+  justify-content: center;
+}
+
+/* Sur très petits écrans : empilement fluide */
+@media (max-width: 480px) {
+  .contact-cta__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-cta__actions .btn {
+    width: 80%;
+    max-width: 260px;
+  }
+}
