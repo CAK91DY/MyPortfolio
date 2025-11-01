@@ -1897,3 +1897,70 @@ html[data-theme="dark"] .segmented{
 }
 .hero__avatar img { animation: floatBreath 6s ease-in-out infinite; }
 
+/* 1) Empêcher les débordements dans les conteneurs flex/grille */
+.hero__cta,
+.hero__cta .btn {
+  min-width: 0;                 /* autorise le shrink */
+}
+
+/* 2) Boutons : qu'ils puissent rétrécir dans les lignes flex */
+.btn {
+  flex: 0 1 auto;               /* largeur flexible, pas imposée */
+  max-width: 100%;              /* jamais plus large que le conteneur */
+  overflow: hidden;
+  text-overflow: ellipsis;      /* coupe proprement si vraiment trop long */
+  white-space: nowrap;          /* garde l’icône + label sur une ligne */
+}
+
+/* 3) Sur petits écrans, forcer un layout sûr */
+@media (max-width: 480px) {
+  .hero__cta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .hero__cta .btn { width: 100%; }      /* chaque colonne remplit sa cellule */
+  .hero__cta .btn--call { grid-column: 1 / -1; }  /* tel sur 2 colonnes */
+}
+
+/* 4) Menu/CTA bas : éviter tout dépassement horizontal */
+@media (max-width: 600px) {
+  .nav-pills,
+  .contact-cta__actions { min-width: 0; }
+  .contact-cta__actions .btn { width: 100%; }
+}
+
+/* === HERO – Mode mobile : 2 colonnes + shrink garanti === */
+@media (max-width: 540px){
+  .hero__cta{
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 92% !important;         /* bien contenu */
+    margin: 16px auto 0 !important;
+    min-width: 0 !important;
+  }
+
+  /* Chaque enfant du conteneur peut rétrécir */
+  .hero__cta > * { min-width: 0 !important; }
+
+  /* Les liens-boutons remplissent leur cellule, sans forcer la largeur */
+  .hero__cta > a.btn{
+    width: 100% !important;
+    flex: 0 1 auto !important;
+    max-width: 100% !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;           /* coupe si trop long */
+    padding: 12px 14px !important; /* compacité */
+    font-size: 15px !important;
+  }
+
+  /* Le bouton téléphone sur 2 colonnes (plein écran) */
+  .hero__cta > a.btn--call{
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Sécurité : dans n’importe quel flex/ grid, autoriser le shrink */
+.hero__cta, .hero__cta a.btn { min-width: 0 !important; }
