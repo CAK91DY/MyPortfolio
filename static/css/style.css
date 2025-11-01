@@ -191,7 +191,8 @@ p{ font-size:16px; }
 .btn__icon{ display:inline-grid; place-items:center; width:18px; height:18px; }
 @media (max-width: 480px){
   .hero__avatar img{ width:140px; height:140px; }
-  .btn{ width:100%; justify-content:center; }
+  /* Seuls les boutons du HERO sont plein largeur */
+  .hero__cta .btn{ width:100%; justify-content:center; }
 }
 
 /* Dégradé pour les boutons primaires du hero */
@@ -2042,4 +2043,27 @@ html[data-theme="dark"] .segmented{
     width: auto;             /* ne force plus la pleine largeur */
     justify-content: center;
   }
+}
+
+/* --- Menu mobile : FR|EN bien contenu dans la carte --- */
+.nav-pills { padding-bottom: 14px; }                 /* un peu d’air en bas */
+.nav-pills .nav-lang { margin-top: 8px; }            /* espace au-dessus du toggle */
+.nav-pills .segmented { width: 100%; box-sizing: border-box; }  /* pas de débordement */
+.nav-pills .segmented__btn { padding: .55rem 1rem; } /* équilibre visuel */
+
+/* Boutons par défaut : largeur intrinsèque (pas 100%) */
+@media (max-width: 600px){
+  .btn{ width:auto; }                                /* annule l’ancienne règle globale */
+  .projects-cta .btn,
+  .cert-block .btn--primary,
+  .projects-grid .project-tile .btn,
+  .contact-cta__actions .btn { width:auto; }         /* reste à la taille du contenu */
+}
+
+/* Si tu veux garder des boutons plein écran UNIQUEMENT dans le bandeau bleu : */
+@media (max-width: 600px){
+  .contact-cta__actions { gap:10px; }
+  .contact-cta__actions .btn { width:48%; min-width:140px; } /* deux colonnes équilibrées */
+  /* ou, si tu préfères chacun sur toute la ligne : décommente la ligne suivante */
+  /* .contact-cta__actions .btn { width:100%; } */
 }
