@@ -2068,33 +2068,46 @@ html[data-theme="dark"] .segmented{
   /* .contact-cta__actions .btn { width:100%; } */
 }
 
-/* === Harmonisation des boutons du CTA "Prêt à collaborer ?" === */
+/* === Finalisation du design des boutons CTA === */
 .contact-cta__actions {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   margin-top: 1rem;
 }
 
 .contact-cta__actions .btn {
-  flex: 1 1 160px;               /* largeur fluide mais équilibrée */
-  max-width: 200px;              /* évite les boutons trop longs */
+  flex: 1 1 150px;               /* largeur fluide */
+  max-width: 180px;              /* pas trop large */
+  min-width: 140px;              /* pas trop étroit */
   text-align: center;
-  padding: 12px 18px;
-  border-radius: 50px;           /* arrondi plus doux */
-  font-size: 16px;
+  padding: 10px 14px;
+  border-radius: 32px;           /* arrondi adouci */
+  font-size: 15px;
+  font-weight: 500;
   justify-content: center;
+  transition: all 0.25s ease;
 }
 
-/* Sur très petits écrans : empilement fluide */
+/* Animation douce au survol */
+.contact-cta__actions .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile : boutons centrés et légèrement plus larges */
 @media (max-width: 480px) {
   .contact-cta__actions {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
   }
+
   .contact-cta__actions .btn {
-    width: 80%;
-    max-width: 260px;
+    flex: 1 1 45%;
+    max-width: none;
+    padding: 12px 16px;
   }
 }
