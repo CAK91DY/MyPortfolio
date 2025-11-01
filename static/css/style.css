@@ -2111,3 +2111,58 @@ html[data-theme="dark"] .segmented{
     padding: 12px 16px;
   }
 }
+
+/* === NAV : alignement pixel-perfect des .pill et du toggle FR|EN === */
+:root{
+  --nav-h: 38px;          /* hauteur commune */
+  --seg-pad: 4px;         /* padding interne du toggle */
+  --safari-nudge: -1px;   /* micro-nudge Safari ; passe à 0 si besoin */
+}
+
+.header__inner{ align-items:center; }     /* centre verticalement toute la barre */
+
+/* Les items de nav : même hauteur pour tout le monde */
+.nav-pills{ display:flex; align-items:center; gap:14px; }
+
+/* Pills */
+.pill{
+  height:var(--nav-h);
+  padding:0 14px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  line-height:1;                 /* évite les décalages de baseline */
+  border-radius:10px;
+}
+
+/* Toggle FR|EN */
+.nav-lang{ display:flex; align-items:center; margin-left:8px; }
+.nav-lang .segmented{
+  height:var(--nav-h);
+  padding:var(--seg-pad);
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  vertical-align:middle;
+  transform: translateY(var(--safari-nudge));  /* rattrape le 1px de Safari */
+}
+.nav-lang .segmented__btn{
+  height: calc(var(--nav-h) - var(--seg-pad)*2);
+  display:flex; align-items:center; justify-content:center;
+  line-height:1;                 /* cohérence avec .pill */
+  padding:0 12px;
+}
+.nav-lang .segmented__thumb{
+  top:var(--seg-pad);
+  bottom:var(--seg-pad);
+  height: calc(var(--nav-h) - var(--seg-pad)*2);
+  border-radius:999px;
+}
+
+/* Mobile : on enlève le nudge et on garde une hauteur confortable */
+@media (max-width:860px){
+  .nav-lang{ width:100%; margin-left:0; }
+  .nav-lang .segmented{ transform:none; height:34px; }
+  .nav-lang .segmented__btn{ height:28px; }
+  .nav-lang .segmented__thumb{ height:28px; }
+}
