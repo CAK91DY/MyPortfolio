@@ -6,8 +6,8 @@ from flask import (
 from flask_babel import Babel, get_locale, _
 from urllib.parse import urlparse
 from config import Config
-from mail_utils import send_contact_email
-# from auth import auth_bp   # ← décommente si tu utilises vraiment ce blueprint
+from db import init_db, save_contact_message
+# from auth import auth_bp  # ← décommente si tu utilises vraiment ce blueprint
 
 # ------------------ Extensions ------------------
 babel = Babel()
@@ -38,46 +38,48 @@ def contact():
 
 @pages_bp.post("/contact/submit", endpoint="contact_submit")
 def contact_submit():
-    # Honeypot anti-spam
+    """Enregistre le message de contact dans PostgreSQL."""
+    # --- Anti-spam (honeypot) ---
     if (request.form.get("company") or "").strip():
         flash(_("Votre message n’a pas été envoyé (filtre anti-spam)."), "error")
         return redirect(url_for("pages.contact"))
 
+    # --- Champs du formulaire ---
     name    = (request.form.get("name") or "").strip()
     email   = (request.form.get("email") or "").strip()
     subject = (request.form.get("subject") or "").strip()
     message = (request.form.get("message") or "").strip()
-    consent = request.form.get("consent")
+    consent = bool(request.form.get("consent"))
 
+    # --- Validation ---
     if not all([name, email, subject, message, consent]):
         flash(_("Merci de remplir tous les champs requis."), "error")
         return redirect(url_for("pages.contact"))
 
-    # Envoi via l’API Brevo (mail_utils)
-    ok = send_contact_email(name, email, subject, message)
-    if ok:
-        flash(_("Merci ! Votre message a bien été envoyé."), "success")
+    # --- Sauvegarde en base Postgres ---
+    saved = save_contact_message(name, email, subject, message, consent)
+    if saved:
+        flash(_("Merci ! Votre message a bien été enregistré."), "success")
     else:
-        flash(_("Une erreur est survenue lors de l’envoi de votre message."), "error")
+        flash(_("Votre message n'a pas pu être enregistré."), "error")
 
-    current_app.logger.info("Contact form: %s <%s> — %s\n%s", name, email, subject, message)
+    # --- Log interne ---
+    current_app.logger.info(
+        "Contact form: %s <%s> — %s\n%s", name, email, subject, message
+    )
     return redirect(url_for("pages.contact"))
 
-# ---------- LANG SWITCH (fonction commune) ----------
+
+# ---------- LANG SWITCH ----------
 def _do_set_lang(lang: str):
-    """
-    Change la langue ('fr' ou 'en'), puis redirige vers la page d'origine.
-    Cette fonction est utilisée par 2 endpoints alias : set_lang et set_language.
-    """
+    """Change la langue ('fr' ou 'en'), puis redirige vers la page d'origine."""
     lang = (lang or "").lower()
     if lang in ("fr", "en"):
         session["lang"] = lang
 
-    # Sécurise la redirection
     nxt = request.args.get("next") or request.referrer or url_for("pages.index")
     try:
         parsed = urlparse(nxt)
-        # n'autorise que les redirections internes
         if parsed.netloc or not nxt.startswith(("/", "?")):
             nxt = url_for("pages.index")
     except Exception:
@@ -85,54 +87,52 @@ def _do_set_lang(lang: str):
 
     return redirect(nxt)
 
-# Endpoint “officiel”
 @pages_bp.route("/lang/<lang>", endpoint="set_lang")
 def set_lang(lang: str):
     return _do_set_lang(lang)
 
-# Alias pour compatibilité avec tes templates existants
 @pages_bp.route("/language/<lang>", endpoint="set_language")
 def set_language(lang: str):
     return _do_set_lang(lang)
+
 
 # ------------------ App factory ------------------
 def create_app():
     app = Flask(__name__, static_folder="static", template_folder="templates")
     app.config.from_object(Config)
 
-    # Valeurs par défaut utiles à Babel
+    # --- Valeurs Babel par défaut ---
     app.config.setdefault("BABEL_DEFAULT_LOCALE", "fr")
     app.config.setdefault("BABEL_DEFAULT_TIMEZONE", "Europe/Paris")
     app.config.setdefault("BABEL_TRANSLATION_DIRECTORIES", "translations")
 
-    # Clé secrète pour flash / sessions (mets-la dans Config/.env en prod)
+    # --- Clé secrète (sessions / flash) ---
     if not app.config.get("SECRET_KEY"):
         app.config["SECRET_KEY"] = "dev-secret-change-me"
 
-    # --- Fonction de sélection de locale (session > header navigateur > fr) ---
+    # --- Fonction de sélection de locale ---
     def select_locale():
         lang = session.get("lang")
         if lang in ("fr", "en"):
             return lang
         return request.accept_languages.best_match(["fr", "en"]) or "fr"
 
-    # Flask-Babel v4 : on passe locale_selector ici
     babel.init_app(app, locale_selector=select_locale)
 
-    # Variables globales Jinja
+    # --- Variables globales Jinja ---
     @app.context_processor
     def inject_globals():
         return {
             "user": session.get("user"),
             "ep": (request.endpoint or ""),
-            # expose get_locale() pour <html lang="{{ get_locale() }}">
             "get_locale": lambda: str(get_locale()),
         }
 
-    # Enregistre les blueprints nécessaires
-    # app.register_blueprint(auth_bp)   # si tu l’utilises
+    # --- Blueprints ---
+    # app.register_blueprint(auth_bp)
     app.register_blueprint(pages_bp)
 
+    # --- Gestion des erreurs ---
     @app.errorhandler(404)
     def not_found(e):
         try:
@@ -145,7 +145,12 @@ def create_app():
         current_app.logger.exception("Erreur serveur")
         return _("Une erreur interne est survenue."), 500
 
+    # --- Initialisation DB ---
+    with app.app_context():
+        init_db()
+
     return app
+
 
 # ------------------ Entrypoint ------------------
 app = create_app()
