@@ -1,13 +1,17 @@
 # app.py
 from flask import (
     Flask, render_template, session, Blueprint,
-    request, redirect, url_for, flash, current_app
+    request, redirect, url_for, flash, current_app, abort
 )
 from flask_babel import Babel, get_locale, _
 from urllib.parse import urlparse
+from functools import wraps
+from sqlalchemy import text
 from config import Config
-from db import init_db, save_contact_message
-# from auth import auth_bp  # ← décommente si tu utilises vraiment ce blueprint
+from db import init_db, save_contact_message, engine  # ← on récupère aussi engine
+import math
+from sqlalchemy import text
+from db import engine
 
 # ------------------ Extensions ------------------
 babel = Babel()
@@ -96,6 +100,82 @@ def set_language(lang: str):
     return _do_set_lang(lang)
 
 
+# ------------------ Blueprint "admin" ------------------
+admin_bp = Blueprint("admin", __name__, url_prefix="/admin")
+
+def admin_required(f):
+    """Décorateur pour protéger les routes admin par session."""
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if not session.get("admin_auth"):
+            return redirect(url_for('admin.login', next=request.path))
+        return f(*args, **kwargs)
+    return wrapper
+
+@admin_bp.route("/login", methods=["GET", "POST"])
+def login():
+    """
+    Page de login simple.
+    Utilise Config.ADMIN_USER et Config.ADMIN_PASSWORD depuis les variables d'env.
+    """
+    if request.method == "POST":
+        username = (request.form.get("username") or "").strip()
+        password = (request.form.get("password") or "").strip()
+
+        if username == Config.ADMIN_USER and password == Config.ADMIN_PASSWORD:
+            session["admin_auth"] = True
+            flash(_("Connexion réussie."), "success")
+            nxt = request.args.get("next") or url_for("admin.messages")
+            return redirect(nxt)
+
+        flash(_("Identifiants invalides."), "error")
+
+    return render_template("admin_login.html")
+    
+
+@admin_bp.route("/logout")
+@admin_required
+def logout():
+    session.pop("admin_auth", None)
+    flash(_("Déconnexion effectuée."), "info")
+    return redirect(url_for("admin.login"))
+
+@admin_bp.route("/messages")
+@admin_required
+def messages():
+    # paramètres de pagination
+    page = max(1, int(request.args.get("page", 1)))
+    per = max(1, min(100, int(request.args.get("per", 20))))
+    offset = (page - 1) * per
+
+    # total des lignes
+    with engine.begin() as conn:
+        total = conn.execute(text("SELECT COUNT(*) FROM contact_messages")).scalar() or 0
+        last_page = max(1, math.ceil(total / per)) if total else 1
+
+        # si page > last_page, on revient sur la dernière existante
+        if page > last_page:
+            return redirect(url_for("admin.messages", page=last_page, per=per))
+
+        rows = conn.execute(
+            text("""
+                SELECT id, name, email, subject, message, created_at
+                FROM contact_messages
+                ORDER BY created_at DESC
+                LIMIT :limit OFFSET :offset
+            """),
+            {"limit": per, "offset": offset}
+        ).mappings().all()
+
+    return render_template(
+        "admin_messages.html",
+        rows=rows,
+        page=page,
+        per=per,
+        total=total,
+        last_page=last_page,
+    )
+
 # ------------------ App factory ------------------
 def create_app():
     app = Flask(__name__, static_folder="static", template_folder="templates")
@@ -129,8 +209,8 @@ def create_app():
         }
 
     # --- Blueprints ---
-    # app.register_blueprint(auth_bp)
     app.register_blueprint(pages_bp)
+    app.register_blueprint(admin_bp)
 
     # --- Gestion des erreurs ---
     @app.errorhandler(404)

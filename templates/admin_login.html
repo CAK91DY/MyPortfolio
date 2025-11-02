@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Admin — Connexion') }}{% endblock %}
+
+{% block content %}
+<section class="skills-hero">
+  <div class="container hero__inner">
+    <span class="section-label">{{ _('Administration') }}</span>
+    <h1 class="hero__title">{{ _('Connexion') }}</h1>
+    <p class="hero__lead">{{ _("Accès réservé.") }}</p>
+  </div>
+</section>
+
+<section class="contact-card full-bleed">
+  <form class="contact-form" method="post" action="{{ url_for('admin.login', next=request.args.get('next')) }}">
+    <label class="field" for="username">
+      <span>{{ _('Identifiant') }}</span>
+      <input id="username" type="text" name="username" required autocomplete="username">
+    </label>
+
+    <label class="field" for="password">
+      <span>{{ _('Mot de passe') }}</span>
+      <input id="password" type="password" name="password" required autocomplete="current-password">
+    </label>
+
+    <div class="actions">
+      <button type="submit" class="btn-pill btn-pill--filled">{{ _('Se connecter') }}</button>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container" role="status" aria-live="polite">
+          {% for cat, msg in messages %}
+            <div class="flash flash--{{ cat }}">
+              <span class="flash-icon">{% if cat == 'success' %}✅{% elif cat == 'error' %}❌{% else %}💬{% endif %}</span>
+              <span class="flash-text">{{ msg }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  </form>
+</section>
+{% endblock %}

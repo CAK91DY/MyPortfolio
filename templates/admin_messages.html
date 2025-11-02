@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Admin — Messages') }}{% endblock %}
+
+{% block content %}
+<section class="skills-hero">
+  <div class="container hero__inner">
+    <span class="section-label">{{ _('Administration') }}</span>
+    <h1 class="hero__title">{{ _('Messages de contact') }}</h1>
+    <p class="hero__lead">
+      {{ _('Total :') }} <strong>{{ total }}</strong> —
+      <a class="btn-pill btn-pill--outline" href="{{ url_for('admin.logout') }}">{{ _('Se déconnecter') }}</a>
+    </p>
+  </div>
+</section>
+
+<section class="contact-card full-bleed">
+  <div class="contact-form" style="overflow:auto;">
+    <table style="width:100%; border-collapse:collapse;">
+      <thead>
+        <tr>
+          <th style="text-align:left; padding:.5rem; border-bottom:1px solid #e5e7eb;">ID</th>
+          <th style="text-align:left; padding:.5rem; border-bottom:1px solid #e5e7eb;">{{ _('Date') }}</th>
+          <th style="text-align:left; padding:.5rem; border-bottom:1px solid #e5e7eb;">{{ _('Nom') }}</th>
+          <th style="text-align:left; padding:.5rem; border-bottom:1px solid #e5e7eb;">Email</th>
+          <th style="text-align:left; padding:.5rem; border-bottom:1px solid #e5e7eb;">{{ _('Objet') }}</th>
+          <th style="text-align:left; padding:.5rem; border-bottom:1px solid #e5e7eb;">{{ _('Message') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>
+          <td style="padding:.5rem; border-bottom:1px solid #f1f5f9;">{{ r.id }}</td>
+          <td style="padding:.5rem; border-bottom:1px solid #f1f5f9;">{{ r.created_at }}</td>
+          <td style="padding:.5rem; border-bottom:1px solid #f1f5f9;">{{ r.name }}</td>
+          <td style="padding:.5rem; border-bottom:1px solid #f1f5f9;"><a href="mailto:{{ r.email }}">{{ r.email }}</a></td>
+          <td style="padding:.5rem; border-bottom:1px solid #f1f5f9;">{{ r.subject }}</td>
+          <td style="padding:.5rem; border-bottom:1px solid #f1f5f9; white-space:pre-wrap;">{{ r.message }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="6" style="padding:.75rem; text-align:center; color:#64748b;">{{ _('Aucun message pour le moment.') }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Pagination (sécurisée avec valeurs par défaut) -->
+    <div class="actions" style="margin-top:1rem; justify-content:space-between;">
+      <div>{{ _('Page') }} {{ page|default(1) }} / {{ last_page|default(1) }} — {{ per|default(20) }} {{ _('par page') }}</div>
+      <div style="display:flex; gap:.5rem;">
+        {% if page|default(1) > 1 %}
+          <a class="btn-pill btn-pill--outline" href="{{ url_for('admin.messages', page=1, per=per|default(20)) }}">« {{ _('Début') }}</a>
+          <a class="btn-pill btn-pill--outline" href="{{ url_for('admin.messages', page=(page|default(1)-1), per=per|default(20)) }}">‹ {{ _('Précédent') }}</a>
+        {% endif %}
+        {% if page|default(1) < last_page|default(1) %}
+          <a class="btn-pill btn-pill--outline" href="{{ url_for('admin.messages', page=(page|default(1)+1), per=per|default(20)) }}">{{ _('Suivant') }} ›</a>
+          <a class="btn-pill btn-pill--outline" href="{{ url_for('admin.messages', page=last_page|default(1), per=per|default(20)) }}">{{ _('Fin') }} »</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
