@@ -1,17 +1,13 @@
-# app.py
-from flask import (
-    Flask, render_template, session, Blueprint,
-    request, redirect, url_for, flash, current_app, abort
-)
+# app.py (imports propres)
+from flask import Flask, render_template, session, Blueprint, request, redirect, url_for, flash, current_app
 from flask_babel import Babel, get_locale, _
 from urllib.parse import urlparse
 from functools import wraps
+import math
+
 from sqlalchemy import text
 from config import Config
-from db import init_db, save_contact_message, engine  # ← on récupère aussi engine
-import math
-from sqlalchemy import text
-from db import engine
+from db import init_db, save_contact_message, engine
 
 # ------------------ Extensions ------------------
 babel = Babel()
