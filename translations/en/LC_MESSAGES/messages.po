@@ -819,3 +819,15 @@ msgstr "Send"
 
 msgid "Email direct"
 msgstr "Direct email"
+
+msgid "Compétences validées :"
+msgstr "Validated skills:"
+
+msgid "Visualisation avancée :"
+msgstr "Advanced visualization:"
+
+msgid "Data storytelling :"
+msgstr "Data storytelling:"
+
+msgid "Data Engineering :"
+msgstr "Data Engineering:"

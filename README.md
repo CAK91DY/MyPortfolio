@@ -80,3 +80,5 @@ GRANT ALL PRIVILEGES ON DATABASE portfolio TO portfolio_user;
 
 # Verifier le contenu de la base de donnée depuis Render :
 PGPASSWORD="nMJZHaVkKtzDYBo1dgdSeqTvOEzGlpa0" psql -h dpg-d43qhjmmcj7s73bcpd30-a.oregon-postgres.render.com -U datacraft_portfolio_db_user datacraft_portfolio_db
+
+https://datacraft-portfolio.onrender.com/admin/login

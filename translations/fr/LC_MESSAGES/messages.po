@@ -822,3 +822,15 @@ msgstr "Envoyer"
 
 msgid "Email direct"
 msgstr "Email direct"
+
+msgid "Compétences validées :"
+msgstr "Compétences validées :"
+
+msgid "Visualisation avancée :"
+msgstr "Visualisation avancée :"
+
+msgid "Data storytelling :"
+msgstr "Data storytelling :"
+
+msgid "Data Engineering :"
+msgstr "Data Engineering :"
